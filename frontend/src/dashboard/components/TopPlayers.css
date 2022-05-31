@@ -1,0 +1,29 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+  border-radius: 20px;
+  height: 40vh;
+  width: 60%;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+.list-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.list-wrapper ul {
+  padding: 0;
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+.list-wrapper ol {
+  padding: 0;
+  list-style-position: inside;
+}

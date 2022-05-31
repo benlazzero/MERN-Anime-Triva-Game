@@ -1,14 +1,16 @@
 import React from 'react';
-import styles from './Login.css';
+
+import LoginButton from '../components/LoginButton';
+import './Login.css';
 
 const Login = () => {
   return (
     <div className="login-wrapper">
       <p>welcome to</p>
       <h1>ANICHAR<br />TRIVIA</h1>
-      {/* add button components */}
+      <LoginButton name="(G) Sign in with Google" address="/google" />
       <span>OR</span>
-      {/* add button components */}
+      <LoginButton name="Continue as a guest" address="/dashboard" />
     </div>
   )
 };

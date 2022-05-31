@@ -1,0 +1,15 @@
+.stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  width: 60%;
+  height: 20vh;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.stats-wrapper h1 {
+  margin-top: 10%;
+}

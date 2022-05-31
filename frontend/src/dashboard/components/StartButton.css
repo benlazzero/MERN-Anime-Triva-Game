@@ -1,0 +1,19 @@
+.start-wrapper {
+  background-color: lightgrey;
+  border: 2px solid black;
+  width: 20%;
+  border-radius: 20px;
+  text-align: center;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.start-wrapper:hover {
+  background-color: white;
+}
+
+.start-wrapper a {
+  text-decoration: none;
+  color: black;
+}
+

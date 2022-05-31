@@ -1,0 +1,18 @@
+.button-wrapper {
+  display: flex;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 80%;
+  height: 40px;
+  text-align: center;
+}
+
+.button-wrapper:hover {
+  border-color: white;
+}
+
+.button-wrapper p {
+  color: black;
+  margin: auto;
+}
