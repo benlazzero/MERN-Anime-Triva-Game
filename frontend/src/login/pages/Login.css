@@ -1,0 +1,12 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 60vh;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 30%;
+  background-color: grey;
+}
