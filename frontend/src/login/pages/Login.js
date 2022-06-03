@@ -10,7 +10,7 @@ const Login = () => {
       <h1>ANICHAR<br />TRIVIA</h1>
       <LoginButton name="(G) Sign in with Google" address="/google" />
       <span>OR</span>
-      <LoginButton name="Continue as a guest" address="/dashboard" />
+      <LoginButton name="Continue as a guest" address="/dashboard/guest" />
     </div>
   )
 };

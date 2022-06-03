@@ -5,7 +5,7 @@ import './StartButton.css';
 const StartButton = () => {
   return (
     <div className="start-wrapper">
-      <a href="/quiz">
+      <a href="/game/guest">
         <p>Start Game</p>
       </a>
     </div>

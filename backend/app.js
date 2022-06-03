@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const loginRoute = require('./routes/login-route');
+const gameRoute = require('./routes/game-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const statusError = require('./middleware/status-error');
 
@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors());
 app.use(statusError);
-app.use(loginRoute);
+app.use(gameRoute);
 app.use(dashboardRoute);
 
 mongoose.connect('mongodb+srv://blazzero:mongo123@cluster0.askmg.mongodb.net/?retryWrites=true&w=majority')

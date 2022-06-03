@@ -1,19 +1,13 @@
 import React from 'react';
 
+import GetTopPlayers from '../../shared/components/GetTopPlayers';
 import './TopPlayers.css';
 
 const TopPlayers = () => {
   return (
     <div className="content-wrapper">
       <h1>Top Players</h1>
-      <div className="list-wrapper">
-        <ol className="usernames">
-          <li>tester</li>
-        </ol>
-        <ul className="scores">
-          <li>20/34</li>
-        </ul>
-      </div>
+        <GetTopPlayers />
     </div>
   );
 };
