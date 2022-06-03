@@ -2,18 +2,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const loginRoute = require('./routes/login-route');
+const dashboardRoute = require('./routes/dashboard-route');
+const statusError = require('./middleware/status-error');
 
 const app = express();
 
 app.use(cors());
+app.use(statusError);
 app.use(loginRoute);
+app.use(dashboardRoute);
 
-app.listen(4000, (error) => {
-  if(!error) {
-    console.log(`server running on port 4000`);
-  } else {
-    console.log("error occured starting server");
-  }
-});
+mongoose.connect('mongodb+srv://blazzero:mongo123@cluster0.askmg.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    app.listen(4000)
+    console.log('listening on port 4000');
+  })
+  .catch(err => {
+    console.log(err)
+  });
