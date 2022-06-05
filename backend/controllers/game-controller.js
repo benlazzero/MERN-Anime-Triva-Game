@@ -1,10 +1,22 @@
-const axios = require('axios').default;
+const Anime = require('../models/anime');
 
-const displayQuote = async (req, res, next) => {
-  //let quote = await axios.get('https://animechan.vercel.app/api/random');
-  //console.log(quote.data);
-  //res.json({quote: `${quote.data.quote}`}); 
-  res.send('building db');
+const randomAnime = async (req, res, next) => {
+  const wrongAnswers = [];
+  const randomSelection = Math.floor(Math.random() * 103);
+  const doc = await Anime.findOne().skip(randomSelection);
+
+  while (wrongAnswers.length < 3) {
+    let randomWrong = Math.floor(Math.random() * 103);
+    let wrong = await Anime.findOne().skip(randomWrong);
+
+    if (wrong.anime !== doc.anime && !wrongAnswers.includes(wrong.anime)) {
+      wrongAnswers.push(wrong.anime);
+    }
+  }
+
+  res.json({quote: `${doc.quote}`, character: `${doc.character}`, 
+    anime: `${doc.anime}`, wrong1: `${wrongAnswers[0]}`, wrong2: `${wrongAnswers[1]}`, 
+    wrong3: `${wrongAnswers[2]}`}); 
 };
 
-exports.displayQuote = displayQuote;
+exports.randomAnime = randomAnime;
