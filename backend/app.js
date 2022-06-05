@@ -7,13 +7,17 @@ const mongoose = require('mongoose');
 const gameRoute = require('./routes/game-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const statusError = require('./middleware/status-error');
+//const scraper = require('./scraper.js');
 
 const app = express();
+
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use(cors());
 app.use(statusError);
 app.use(gameRoute);
 app.use(dashboardRoute);
+//app.use(scraper);
 
 mongoose.connect('mongodb+srv://blazzero:mongo123@cluster0.askmg.mongodb.net/?retryWrites=true&w=majority')
   .then(() => {
@@ -23,3 +27,5 @@ mongoose.connect('mongodb+srv://blazzero:mongo123@cluster0.askmg.mongodb.net/?re
   .catch(err => {
     console.log(err)
   });
+
+
