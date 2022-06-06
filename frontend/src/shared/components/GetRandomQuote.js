@@ -1,38 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
+import AnswerButtons from '../../game/components/Answer-Buttons';
 
 const GetRandomQuote = () => {
   const [quote, setQuote] = useState('loading...');
-  const [isLoading, setIsLoading] = useState(false);
-  
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true); 
-        await axios.get('http://localhost:4000/api/game')
-        .then(result => setQuote(result.data.quote));
-
-        setIsLoading(false);
-      } catch (error) {
-        return console.log(error);
-      }
-    };
-
-    if (!isLoading) {
-      console.log('in fetch block');
-      fetchData();
-    }
-    
-
-  //return () => {
-    //isMounted = false;
-    //source.cancel();
-  //}
+    fetch('http://localhost:4000/api/game')
+      .then(response => response.json())
+      .then(data => setQuote(data))
+      .catch(err => {
+        console.log(err)
+      })
   }, []); 
 
   return (
-    <p>{quote}</p>
+    <div>
+      <p>{quote.quote}</p>
+      <p>{quote.character}</p>
+      <h3>Answers Below</h3> 
+      <hr />
+      <AnswerButtons randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+    </div>
   );
 };
 

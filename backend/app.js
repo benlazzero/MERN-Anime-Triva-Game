@@ -11,7 +11,7 @@ const statusError = require('./middleware/status-error');
 
 const app = express();
 
-app.get('/favicon.ico', (req, res) => res.status(204));
+app.get('/favicon.ico', (req, res) => res.status(204)); //todo get real favicon
 
 app.use(cors());
 app.use(statusError);
