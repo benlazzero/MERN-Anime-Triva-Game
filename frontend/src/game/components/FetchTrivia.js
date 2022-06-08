@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import AnswerButtons from '../../game/components/Answer-Buttons';
+import AnswerButtons from './Answer-Buttons';
 
 const GetRandomQuote = () => {
   const [quote, setQuote] = useState('loading...');
@@ -20,7 +20,7 @@ const GetRandomQuote = () => {
       <p>{quote.character}</p>
       <h3>Answers Below</h3> 
       <hr />
-      <AnswerButtons randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+      <AnswerButtons newTrvia={GetRandomQuote} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
     </div>
   );
 };

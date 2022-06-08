@@ -1,14 +1,14 @@
 import React from 'react';
 
 import './Game.css';
-import GetRandomQuote from '../../shared/components/GetRandomQuote';
+import FetchTrivia from '../components/FetchTrivia';
 
 const Game = () => {
   
   return (
     <div>
       <h3>Name that anime...</h3>
-      <GetRandomQuote />
+      <FetchTrivia />
     </div>
   )
 };
