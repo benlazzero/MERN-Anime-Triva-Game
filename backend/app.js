@@ -1,9 +1,11 @@
 // https://animechan.vercel.app/ <- this is the api
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const uri = process.env.MONGO_URI;
 const gameRoute = require('./routes/game-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const statusError = require('./middleware/status-error');
@@ -19,7 +21,7 @@ app.use(gameRoute);
 app.use(dashboardRoute);
 //app.use(scraper);
 
-mongoose.connect('mongodb+srv://blazzero:mongo123@cluster0.askmg.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(uri)
   .then(() => {
     app.listen(4000)
     console.log('listening on port 4000');

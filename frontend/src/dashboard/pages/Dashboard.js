@@ -10,6 +10,7 @@ const Dashboard = () => {
       <TopPlayers />
       <Stats />
       <StartButton />
+      <a href="/">back to login</a>
     </div>
   );
 };
