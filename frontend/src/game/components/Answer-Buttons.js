@@ -7,10 +7,11 @@ const AnswerButtons = (props) => {
   const [rightAnswer, setRightAnswer] = useState(props.randAnswers[0]);
   const selected = React.createRef();
   const ansIsSet = useRef(false);
+  const total = useRef(0);
+  const score = useRef(0);
   let tempAnswers = [];
 
   useEffect(() => {
-    setRightAnswer(props.randAnswers[0]);
     let tempAnswers = [props.randAnswers[0], props.randAnswers[1], props.randAnswers[2], props.randAnswers[3]];
     setAnswers(tempAnswers);
   }, [props])
@@ -38,37 +39,38 @@ const AnswerButtons = (props) => {
       console.log('called array scrambler');
       tempAnswers = MakeMixedAnsArray();
     }
-    if (tempAnswers.length > 0) {
+    if (tempAnswers.length > 0 && mixedAnswers.length === 0) {
      console.log('set to true');
+     setRightAnswer(props.randAnswers[0]);
      ansIsSet.current = true;
      setMixedAnswers(tempAnswers);
+    } else if (tempAnswers.length === 0) {
+      ansIsSet.current = false;
     }
-
   
 
   // onclick show right/wrong answer, prompt for next question
   let possibleAnswers = [];
   const testClick = (event) => {
-    console.log("right answer is " + rightAnswer);
-    console.log("event target is " + event.target.innerHTML);
     selected.current = event.target;
-    console.log(selected.current)
     if (selected.current.innerHTML === rightAnswer) {
       showOutcome(true);
       selected.current.style.color = "green"; 
+      total.current = total.current + 1;
+      score.current = score.current + 1;
     } else {
       selected.current.style.color = "red";
       possibleAnswers = event.target.parentNode.childNodes;
-
       for (let i = 0; i < possibleAnswers.length; i++) {
         if (possibleAnswers[i].innerHTML === rightAnswer) {
           possibleAnswers[i].style.color = "blue";
           break;
         }
       }
-
+      total.current = total.current + 1;
       showOutcome(true);
     }
+    console.log(selected.current);
   }
 
 
@@ -77,6 +79,7 @@ const AnswerButtons = (props) => {
         {console.log(mixedAnswers)}
         {console.log("rendered main")}
         {console.log(rightAnswer)}
+        <p>{score.current} / {total.current}</p>
         <button onClick={testClick}>
           {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
         </button>
