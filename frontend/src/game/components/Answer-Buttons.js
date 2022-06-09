@@ -14,6 +14,11 @@ const AnswerButtons = (props) => {
   useEffect(() => {
     let tempAnswers = [props.randAnswers[0], props.randAnswers[1], props.randAnswers[2], props.randAnswers[3]];
     setAnswers(tempAnswers);
+    showOutcome(false);
+    setMixedAnswers([]);
+    document.querySelectorAll('button').forEach(button => {
+      button.style = 'unset';
+    });
   }, [props])
 
   const MakeMixedAnsArray = () => {
@@ -77,7 +82,7 @@ const AnswerButtons = (props) => {
   return (
       <div>
         {console.log(mixedAnswers)}
-        {console.log("rendered main")}
+        {console.log('from parent component' + tempAnswers)}
         {console.log(rightAnswer)}
         <p>{score.current} / {total.current}</p>
         <button onClick={testClick}>
@@ -92,7 +97,8 @@ const AnswerButtons = (props) => {
         <button onClick={testClick}>
           {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
         </button>
-        { outcome ? <button onClick={()=> {window.location.reload(false)}}>next question</button> : null }
+        { outcome ? <button onClick={props.reload}>next question</button> : null }
+        <a href="/dashboard/guest">back to dashboard</a>
       </div>
   )
 };
