@@ -12,10 +12,6 @@ const LoginButton = (props) => {
 
   return (
     <div>
-      <h2>members login</h2>
-      <input type="text" placeholder='Email' />
-      <input type="text" placeholder='Password' />
-      <button>Login</button>
       <button onClick={googleAuth} className="button-wrapper">
         <p>{props.name}</p> 
       </button>

@@ -8,7 +8,7 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   }, 
-  userName: String,
+  username: String,
   score: Number,
   total: Number,
 });

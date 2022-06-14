@@ -34,6 +34,7 @@ router.get('/google/callback', passport.authenticate("google", {
         if (user === null) {
           let newUser = new User({ 
             email: req.user._json.email,
+            username: 'null',
             score: 0,
             total: 0,
           })

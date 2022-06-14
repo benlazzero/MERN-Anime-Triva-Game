@@ -13,6 +13,7 @@ const uri = process.env.MONGO_URI;
 const gameRoute = require('./routes/game-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const authRoute = require('./routes/auth');
+const createRoute = require('./routes/create');
 const statusError = require('./middleware/status-error');
 //const scraper = require('./scraper.js');
 
@@ -20,6 +21,8 @@ const app = express();
 
 app.get('/favicon.ico', (req, res) => res.status(204)); //todo get real favicon
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(statusError);
 app.use(cookieSession({
   name: 'session',
@@ -36,6 +39,7 @@ app.use(cors({
 app.use(gameRoute);
 app.use(dashboardRoute);
 app.use("/auth", authRoute);
+app.use(createRoute);
 //app.use(scraper);
 
 mongoose.connect(uri)

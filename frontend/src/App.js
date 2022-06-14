@@ -8,28 +8,29 @@ import Game from './game/pages/Game';
 import Create from './login/pages/Create';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   const getUser = async () => {
     try {
       const url ='http://localhost:4000/auth/login/success';
-      const {data} = await axios.get(url, { withCredentials: true});
-      setUser(data.user._json);
-      return data.user._json;
+      let data = await axios.get(url, { withCredentials: true})
+      data = await data.data.user._json.email;
+      setUser(data);
 
     } catch (err) {
      console.log(err); 
     }
-    
+       
   }
 
   return (
     <Router>
       <Routes>
+      {console.log(user)}
         <Route path="/" element={<Login />} />
         <Route path="/dashboard/guest" element={<Dashboard />} />
         <Route path="/game/guest" element={<Game />} />
-        <Route path="/create" element={<Create getUser={getUser} />} />
+        <Route path="/create" element={<Create getUser={getUser} userEmail={user}/>} />
       </Routes>
     </Router>
   );
