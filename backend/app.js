@@ -21,6 +21,11 @@ const app = express();
 
 app.get('/favicon.ico', (req, res) => res.status(204)); //todo get real favicon
 
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  credentials: true,
+}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(statusError);
@@ -31,11 +36,6 @@ app.use(cookieSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: "GET,POST,PUT,DELETE",
-  credentials: true,
-}));
 app.use(gameRoute);
 app.use(dashboardRoute);
 app.use("/auth", authRoute);

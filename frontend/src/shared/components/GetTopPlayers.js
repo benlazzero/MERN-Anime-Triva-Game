@@ -36,7 +36,7 @@ const GetTopPlayers = () => {
 
   if (players.length !== 0) {
     for (let i = 0; i < players.length; i++) {
-      usernames.push(<li key={i.toString()}>{players[i].name}</li>);
+      usernames.push(<li key={i.toString()}>{players[i].username}</li>);
       scores.push(<li key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
     }
 

@@ -98,7 +98,7 @@ const AnswerButtons = (props) => {
           {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
         </button>
         { outcome ? <button onClick={props.reload}>next question</button> : null }
-        <a href="/dashboard/guest">back to dashboard</a>
+        <a href="/dashboard">back to dashboard</a>
       </div>
   )
 };

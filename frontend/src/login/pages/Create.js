@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Create = (props) => {
   const [username, setUsername] = useState();
-  props.getUser();
+  let navigate =useNavigate();
 
+  if (props.user === undefined) {
+    props.getUser();
+  }
   let addUsername = (e) => {
     e.preventDefault();
     fetch('http://localhost:4000/create', {
       method: 'POST',
       mode: 'cors',
+      redirect: 'follow',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name: username, email: props.userEmail }),
+      body: JSON.stringify({ name: username, user: props.user }),
     })
-    console.log(username);
-    console.log(props.userEmail);
+    navigate('/dashboard');
   } 
+
   return (
     <div>
+    { console.log(props.user) }
       <p>create page</p>
       <form onSubmit={addUsername}>
         <input type="text" onChange={(e) => setUsername(e.target.value)} />

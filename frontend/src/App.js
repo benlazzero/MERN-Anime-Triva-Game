@@ -14,7 +14,7 @@ function App() {
     try {
       const url ='http://localhost:4000/auth/login/success';
       let data = await axios.get(url, { withCredentials: true})
-      data = await data.data.user._json.email;
+      data = await data.data.user._json;
       setUser(data);
 
     } catch (err) {
@@ -26,11 +26,10 @@ function App() {
   return (
     <Router>
       <Routes>
-      {console.log(user)}
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard/guest" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/game/guest" element={<Game />} />
-        <Route path="/create" element={<Create getUser={getUser} userEmail={user}/>} />
+        <Route path="/create" element={<Create getUser={getUser} user={user} />} />
       </Routes>
     </Router>
   );

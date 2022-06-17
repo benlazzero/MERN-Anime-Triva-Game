@@ -25,6 +25,14 @@ router.get("/login/failed", (req, res) => {
   });
 });
 
+router.get("/user", (req, res) => {
+  console.log(req.user._json.email);
+  let userEmail = (req.user._json.email);
+  User.findOne({ email: userEmail }, function (err, user) {
+    res.json({ user: user});
+  });
+});
+
 router.get('/google/callback', passport.authenticate("google", {
     failureRedirect: '/auth/login/failed'
   }),
@@ -48,12 +56,15 @@ router.get('/google/callback', passport.authenticate("google", {
         } else if (user != null && req.user._json.email_verified === true) {
           console.log(req.user._json.email + " already exists.");
         }
-        console.log(user);
+        console.log("coming from auth" + user);
+        if (user.username === 'null') {
+          res.redirect('http://localhost:3000/create');
+        } else {
+          res.redirect('http://localhost:3000/dashboard');
+        }
       });
-      res.redirect('http://localhost:3000/create');
-    }
 
-);
+});
 
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 

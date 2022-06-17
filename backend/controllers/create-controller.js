@@ -2,8 +2,10 @@ const express = require('express');
 
 const User = require('../models/user');
 
-const addUsername = (req, res) => {
-  let userEmail = { email: req.body.email};
+const addUsername = (req, res) => { 
+  console.log(req.body);
+  
+  let userEmail = { email: req.body.user.email};
   let username = { username: req.body.name };
 
   User.findOne(userEmail, function (err, user) {
@@ -13,14 +15,9 @@ const addUsername = (req, res) => {
       });  
       console.log('user was updated');
     } else {
-      res.redirect('http://localhost:3000/')
+      console.log('user already set username');
     }
-  });  
-
-
-
-  
-  
+  });   
   
 };
 

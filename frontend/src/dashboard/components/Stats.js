@@ -2,11 +2,12 @@ import React from 'react';
 
 import './Stats.css';
 
-const Stats = () => {
+const Stats = (props) => {
   return (
     <div className="stats-wrapper">
+      { console.log(props.score) }
       <h1>Your Stats</h1>
-      <span>Login to view stats</span>
+      { props.score !== undefined ? <span>{props.score} / {props.total}</span> : <span>login to view stats</span> }
     </div>
   );
 };
