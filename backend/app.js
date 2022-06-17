@@ -3,8 +3,10 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
+//const cookieSession = require('cookie-session');
+const session = require('express-session');
 const passport = require('passport');
 require('./passport.js');
 
@@ -29,11 +31,18 @@ app.use(cors({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(statusError);
-app.use(cookieSession({
-  name: 'session',
-  keys: ["trivia"],
-  maxAge: 24*60*60*100,
-}));
+//app.use(cookieSession({
+  //name: 'session',
+  //keys: ["trivia"],
+  //maxAge: 24*60*60*100,
+//}));
+app.use(session({ 
+  secret: 'cow man', 
+  cookie: {maxAge: 60000 },
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: uri }),
+  }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(gameRoute);

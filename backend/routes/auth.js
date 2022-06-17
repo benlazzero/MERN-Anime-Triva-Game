@@ -68,9 +68,13 @@ router.get('/google/callback', passport.authenticate("google", {
 
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
-router.get("/logout", (req, res) => {
+router.delete("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) throw err;
+    res.clearCookie("session-id");
+  })
   req.logout();
-  res.redirect("http://localhost:3000/")
+  console.log("in /logout block");
 })
 
 module.exports = router
