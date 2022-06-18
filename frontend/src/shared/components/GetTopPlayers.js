@@ -18,7 +18,6 @@ const GetTopPlayers = () => {
         { cancelToken: source.token }
       );
       if (isMounted) {
-        console.log(result.data.player);
         setPlayer(result.data.player);
       } 
       } catch (error) {

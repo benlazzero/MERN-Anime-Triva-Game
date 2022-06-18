@@ -5,9 +5,7 @@ import GuestButton from '../components/GuestButton';
 import './Login.css';
 
 const Login = (props) => {
-  const logoutHandler = () => {
-    props.logout();
-  }
+
 
   return (
     <div className="login-wrapper">
@@ -15,7 +13,7 @@ const Login = (props) => {
       <h1>ANICHAR<br />TRIVIA</h1>
       <LoginButton name="(G) Sign in with Google" />
       <span>OR</span>
-      <GuestButton logout={logoutHandler} user={props.user} name="Continue as a guest" address="/dashboard/guest" />
+      <GuestButton user={props.user} name="Continue as a guest" address="/dashboard/guest" />
     </div>
   )
 };

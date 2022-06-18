@@ -4,6 +4,7 @@ const passport = require("passport");
 const User = require('../models/user');
 
 router.get("/login/success", (req, res) => {
+  console.log(req.user ? "login success" : "fails login suceess");
   if (req.user) {
     res.status(200).json({
       error: false,
@@ -26,18 +27,21 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  console.log(req.user._json.email);
-  let userEmail = (req.user._json.email);
-  User.findOne({ email: userEmail }, function (err, user) {
-    res.json({ user: user});
-  });
+  if (req.user !== undefined) {
+    console.log(req.user._json.email);
+    let userEmail = (req.user._json.email);
+    User.findOne({ email: userEmail }, function (err, user) {
+      res.json({ user: user});
+    });
+  }
 });
 
 router.get('/google/callback', passport.authenticate("google", {
-    failureRedirect: '/auth/login/failed'
+    failureRedirect: '/auth/login/failed',
+    prompt: 'select_account'
   }),
     function (req, res, next) {
-      console.log(req.user._json);
+      console.log("google/callbkck going first" + req.user._json);
       User.findOne({ email: req.user._json.email }, function (err, user) {
         if (user === null) {
           let newUser = new User({ 
@@ -69,12 +73,12 @@ router.get('/google/callback', passport.authenticate("google", {
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 router.delete("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) throw err;
-    res.clearCookie("session-id");
-  })
-  req.logout();
-  console.log("in /logout block");
+    console.log(req.session);
+    req.session.destroy((err) => {
+      if (err) throw err;
+      res.clearCookie("session-id");
+    })
+    req.logout();
 })
 
 module.exports = router
