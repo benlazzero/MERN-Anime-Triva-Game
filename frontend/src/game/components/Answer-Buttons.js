@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 
 const AnswerButtons = (props) => {
   const [outcome, showOutcome] = useState(false);
@@ -6,6 +7,7 @@ const AnswerButtons = (props) => {
   const [mixedAnswers, setMixedAnswers] = useState([]);
   const [rightAnswer, setRightAnswer] = useState(props.randAnswers[0]);
   const selected = React.createRef();
+  const currentUser = useRef("");
   const ansIsSet = useRef(false);
   const total = useRef(0);
   const score = useRef(0);
@@ -56,13 +58,25 @@ const AnswerButtons = (props) => {
 
   // onclick show right/wrong answer, prompt for next question
   let possibleAnswers = [];
-  const testClick = (event) => {
+  const handleClick = (event) => {
+    axios.get('http://localhost:4000/auth/user', { withCredentials: true })
+      .then( response => (currentUser.current = response.data.user.email))
     selected.current = event.target;
     if (selected.current.innerHTML === rightAnswer) {
       showOutcome(true);
       selected.current.style.color = "green"; 
       total.current = total.current + 1;
       score.current = score.current + 1;
+      event.preventDefault();
+      fetch('http://localhost:4000/update', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ score: 1, total: 1 }),
+      })
     } else {
       selected.current.style.color = "red";
       possibleAnswers = event.target.parentNode.childNodes;
@@ -74,6 +88,16 @@ const AnswerButtons = (props) => {
       }
       total.current = total.current + 1;
       showOutcome(true);
+      event.preventDefault();
+      fetch('http://localhost:4000/update', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ score: 0, total: 1 }),
+      })
     }
     console.log(selected.current);
   }
@@ -81,24 +105,24 @@ const AnswerButtons = (props) => {
 
   return (
       <div>
-        {console.log(mixedAnswers)}
+        {console.log("current user is" + currentUser.current)}
         {console.log('from parent component' + tempAnswers)}
         {console.log(rightAnswer)}
         <p>{score.current} / {total.current}</p>
-        <button onClick={testClick}>
+        <button onClick={handleClick}>
           {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
         </button>
-        <button onClick={testClick}>
+        <button onClick={handleClick}>
           {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
         </button>
-        <button onClick={testClick}>
+        <button onClick={handleClick}>
           {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
         </button>
-        <button onClick={testClick}>
+        <button onClick={handleClick}>
           {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
         </button>
         { outcome ? <button onClick={props.reload}>next question</button> : null }
-        <a href="/dashboard/guest">back to dashboard</a>
+        <a href="/dashboard">back to dashboard</a>
       </div>
   )
 };

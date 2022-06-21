@@ -15,6 +15,7 @@ const gameRoute = require('./routes/game-route');
 const dashboardRoute = require('./routes/dashboard-route');
 const authRoute = require('./routes/auth');
 const createRoute = require('./routes/create');
+const updateRoute = require('./routes/update');
 const statusError = require('./middleware/status-error');
 //const scraper = require('./scraper.js');
 
@@ -43,6 +44,7 @@ app.use(gameRoute);
 app.use(dashboardRoute);
 app.use("/auth", authRoute);
 app.use(createRoute);
+app.use(updateRoute);
 //app.use(scraper);
 
 mongoose.connect(uri)

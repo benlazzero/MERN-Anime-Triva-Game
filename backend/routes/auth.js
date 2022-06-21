@@ -27,6 +27,7 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
+  console.log(req.user);
   if (req.user !== undefined) {
     console.log(req.user._json.email);
     let userEmail = (req.user._json.email);
@@ -41,7 +42,7 @@ router.get('/google/callback', passport.authenticate("google", {
     prompt: 'select_account'
   }),
     function (req, res, next) {
-      console.log("google/callbkck going first" + req.user._json);
+      console.log("google/callbkck going first" + req.user);
       User.findOne({ email: req.user._json.email }, function (err, user) {
         if (user === null) {
           let newUser = new User({ 
@@ -51,21 +52,28 @@ router.get('/google/callback', passport.authenticate("google", {
             total: 0,
           })
           newUser.save(function (err, user) {
+            console.log("in save block");
             if (err) {
-              console.log(err)
+              console.log("there was an error in save block" + err)
             } else {
               console.log(user.email + " was saved to mongoDB.");
             }
           });
+          console.log('this is user bullshit');
         } else if (user != null && req.user._json.email_verified === true) {
           console.log(req.user._json.email + " already exists.");
         }
-        console.log("coming from auth" + user);
-        if (user.username === 'null') {
-          res.redirect('http://localhost:3000/create');
-        } else {
-          res.redirect('http://localhost:3000/dashboard');
-        }
+        User.findOne({ email: req.user._json.email }, function (err, user) {
+          console.log("coming from auth" + user);
+          if (user === null) {
+            res.redirect('http://localhost:3000/create');
+          } else {
+            if (user.username === 'null') {
+              res.redirect('http://localhost:3000/create');
+            }
+            res.redirect('http://localhost:3000/dashboard');
+          }
+        });
       });
 
 });
