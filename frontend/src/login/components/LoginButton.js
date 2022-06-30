@@ -13,11 +13,9 @@ const LoginButton = (props) => {
 
 
   return (
-    <div>
-      <button onClick={loginGoogle} className="button-wrapper">
+      <button id="login" className="button-wrapper" onClick={loginGoogle}>
         <p>{props.name}</p> 
       </button>
-    </div>
   );
 };
 

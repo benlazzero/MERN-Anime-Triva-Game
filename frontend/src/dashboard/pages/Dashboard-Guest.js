@@ -2,16 +2,15 @@ import React from 'react';
 
 import TopPlayers from '../components/TopPlayers';
 import Stats from '../components/Stats';
-import StartButton from '../components/StartButton';
+import StartButtonGuest from '../components/StartButtonGuest';
 
-const DashboardGuest = (props) => {
+const DashboardGuest = () => {
 
   return (
     <div className="dash-wrapper">
-      { console.log(props.user) }
       <TopPlayers />
       <Stats />
-      <StartButton />
+      <StartButtonGuest />
       <a href="/">back to login</a>
     </div>
   );

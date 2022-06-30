@@ -6,11 +6,9 @@ const GuestButton = (props) => {
   
 
   return (
-    <div>
-      <button className="button-wrapper" onClick={props.logout}>
+      <button id="guest" className="button-wrapper" onClick={props.logout}>
         <a href={props.address}>{props.name}</a> 
       </button>
-    </div>
   );
 };
 
