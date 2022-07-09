@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './LoginButton.css';
+import gLogo from '../../public/glogo.png';
 
 const LoginButton = (props) => {
 
@@ -14,6 +15,7 @@ const LoginButton = (props) => {
 
   return (
       <button id="login" className="button-wrapper" onClick={loginGoogle}>
+        <img src={gLogo} alt="google logo" /> 
         <p>{props.name}</p> 
       </button>
   );

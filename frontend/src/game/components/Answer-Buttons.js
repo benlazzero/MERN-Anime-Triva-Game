@@ -59,8 +59,10 @@ const AnswerButtons = (props) => {
   // onclick show right/wrong answer, prompt for next question
   let possibleAnswers = [];
   const handleClick = (event) => {
-    axios.get('http://localhost:4000/auth/user', { withCredentials: true })
-      .then( response => (currentUser.current = response.data.user.email))
+    if (currentUser.current === "") {
+      axios.get('http://localhost:4000/auth/user', { withCredentials: true })
+        .then( response => (currentUser.current = response.data.user.email))
+    }
     selected.current = event.target;
     if (selected.current.innerHTML === rightAnswer) {
       showOutcome(true);

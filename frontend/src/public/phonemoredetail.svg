@@ -32,17 +32,6 @@
     <rect x="31" y="55" width="6" height="6" fill="#fff"/>
     <rect x="38" y="55" width="6" height="6" rx=".09" ry=".09" fill="#fff"/>
     <text transform="translate(48.38 60.39)" fill="#fff" font-family="KohinoorTelugu-Regular, &apos;Kohinoor Telugu&apos;" font-size="7"><tspan x="0" y="0">GU</tspan></text>
-    <line x1="28" y1="367" x2="51" y2="367" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <line x1="28" y1="376" x2="51" y2="376" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <line x1="28" y1="385" x2="51" y2="385" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <circle cx="222" cy="374" r="7" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <line x1="227" y1="379" x2="233" y2="385" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <circle cx="219" cy="378" r="2" fill="#fff" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-    <g id="Layer_3" data-name="Layer 3">
-      <path d="M173.26,375.73l-10.26,10.26-10.26-10.26c-2.34-2.34-2.34-6.15,0-8.49h0c2.34-2.34,6.15-2.34,8.49,0l1.77,1.77,1.77-1.77c2.34-2.34,6.15-2.34,8.49,0h0c2.34,2.34,2.34,6.15,0,8.49Z" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-      <path d="M104.01,382h-9.27c-1.12,0-2.66-.63-3.4-1.52-.44-.53-.46-1.3-.08-1.87l1.23-1.85c1.18-1.65,1.4-3.84,1.63-5.86,.36-3.13,1.56-5.36,5.1-5.36h0c3.62,0,4.79,2.33,5.12,5.58,.19,1.88,.85,3.68,1.94,5.22l1.29,1.8c.68,.95,.44,2.29-.55,2.91-.92,.58-2.16,.96-3.02,.96Z" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-      <line x1="100" y1="382" x2="100" y2="386" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4"/>
-    </g>
     <text transform="translate(114.45 76.86)" fill="#fff" font-family="KohinoorTelugu-Bold, &apos;Kohinoor Telugu&apos;" font-size="11"><tspan x="0" y="0">home</tspan></text>
     <text transform="translate(17.33 74.59)" fill="#fff" font-family="KohinoorTelugu-Bold, &apos;Kohinoor Telugu&apos;" font-size="10"><tspan x="0" y="0">curio</tspan></text>
     <text transform="translate(18.27 81.54)" fill="#fff" font-family="KohinoorTelugu-Regular, &apos;Kohinoor Telugu&apos;" font-size="6"><tspan x="0" y="0">curiosi</tspan><tspan x="18.11" y="0" letter-spacing="-.02em">t</tspan><tspan x="20.3" y="0">y</tspan></text>

@@ -2,12 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: grey;
+  background-color: #fcddc0;
+  border: 4px solid #ff8400;
   border-radius: 20px;
   height: 40vh;
-  width: 60%;
+  width: 50%;
   margin: auto;
   margin-top: 10vh;
+  max-width: 730px;
+}
+
+.tool-bar {
+  height: 30px;
+  width: 100%;
+  background-color: #ff8400;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .list-wrapper {
@@ -26,4 +36,26 @@
 .list-wrapper ol {
   padding: 0;
   list-style-position: inside;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.player-bar {
+  width: 40%;
+  border-bottom-left-radius: 15px;
+}
+
+.showPlayers {
+  background-color: #ffecd7;
+  width: 60%;
+  border-bottom-right-radius: 15px;
+}
+
+body {
+  margin: 0;
 }

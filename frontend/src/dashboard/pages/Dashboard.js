@@ -4,9 +4,11 @@ import axios from 'axios';
 import TopPlayers from '../components/TopPlayers';
 import Stats from '../components/Stats';
 import StartButton from '../components/StartButton';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const [user, setUser] = useState(); 
+  let holdUser;
 
   const getInfo = async () => {
     try {
@@ -16,6 +18,7 @@ const Dashboard = () => {
     } catch (err) {
      console.log(err); 
     }
+
   }
 
   const logoutHandler = async () => {
@@ -30,16 +33,20 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    getInfo();
-  }, []);
+      console.log('get effect called');
+      getInfo();
+  }, [holdUser]);
 
   return (
-    <div className="dash-wrapper">
-    { user !== undefined ? <h1>{user.data.user.username}</h1> : <h1>Loading</h1> }
-      <TopPlayers />
-    { user !== undefined ? <Stats score={user.data.user.score} total={user.data.user.total} /> : <Stats /> }
-      <StartButton />
-      <a onClick={logoutHandler} href="/">logout</a>
+    <div className="bg-wrapper">
+      <div className="dash-wrapper">
+        { user !== undefined ? console.log(user) : console.log('user undefined') }
+        { user !== undefined ? <h1>{user.data.user.username}</h1> : <h1>Loading</h1> }
+          <TopPlayers />
+        { user !== undefined ? <Stats score={user.data.user.score} total={user.data.user.total} /> : <Stats /> }
+          <StartButton />
+          <a onClick={logoutHandler} href="/">logout</a>
+      </div>
     </div>
   );
 };

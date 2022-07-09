@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './GetTopPlayers.css';
+
 const GetTopPlayers = () => {
   const [players, setPlayer] = useState([]);
   let usernames = [];

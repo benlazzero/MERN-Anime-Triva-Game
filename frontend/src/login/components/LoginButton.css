@@ -8,21 +8,23 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #00F3E5;
-  border: 2px solid #00F3E5;
-  border-radius: 10px;
-  width: 200px;
-  height: 40px;
+  background-color: #347b81;
+  border: none;
+  border-radius: 25px;
+  width: 232px;
+  height: 52px;
   text-align: center;
 }
 
 .button-wrapper:hover {
-  border-color: white;
+  border: 2px solid white;
+  border-width: 3px;
 }
 
 .button-wrapper p {
   color: white;
   margin: auto;
+  margin-left: 10px;
 }
 
 .button-wrapper a {
@@ -32,11 +34,24 @@
 
 #guest {
   font-size: 1.1em;
+  font-weight: 100;
   margin-bottom: 25%;
-  margin-top: 15px;
 }
 
 #login {
+  font-weight: 100;
   font-size: 1.1em;
-  margin-top: 15%;
 }
+
+#login img {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 1720px) {
+  #guest {
+    margin-bottom: 250px;
+  }
+} 

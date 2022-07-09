@@ -26,11 +26,11 @@ router.get("/login/failed", (req, res) => {
   });
 });
 
-router.get("/user", (req, res) => {
+router.get("/user", async(req, res) => {
   console.log(req.user);
   if (req.user !== undefined) {
     console.log(req.user._json.email);
-    let userEmail = (req.user._json.email);
+    let userEmail = await (req.user._json.email);
     User.findOne({ email: userEmail }, function (err, user) {
       res.json({ user: user});
     });

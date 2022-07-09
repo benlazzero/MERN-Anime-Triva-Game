@@ -1,12 +1,13 @@
 const express = require('express');
 const User = require('../models/user');
 
-const updateScore = (req, res) => { 
+const updateScore = async(req, res) => { 
+  let userInfo =  await req.user;
   let score = req.body.score;
   let total = req.body.total;
   console.log(score);
   console.log(total);
-  if (req.user !== undefined) {
+  if (userInfo !== undefined) {
     console.log(req.user._json.email);
     User.findOne({ email: req.user._json.email }, function (err, result) {
       let currentScore = +result.score + +score;
