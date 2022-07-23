@@ -20,10 +20,6 @@ const DashboardGuest = () => {
                 <img src={folderImage} width="64px" height="64px"/>
                 <p>Back To Login</p>
               </a>
-              <a className="header-link" href="/">
-                <img src={folderImage} width="64px" height="64px" />
-                <p>Edit Account</p>
-              </a>
               <StartButtonGuest />
             </div>
           </div>

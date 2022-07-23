@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;800&display=swap');
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,14 +12,23 @@
   margin: auto;
   margin-top: 10vh;
   max-width: 730px;
+  filter: drop-shadow(5px 5px 4px #00000040);
 }
 
 .tool-bar {
+  display: flex;
+  justify-content: flex-end;
   height: 30px;
   width: 100%;
   background-color: #ff8400;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.tool-bar img {
+  height: 28px;
+  width: 28px;
+  margin-right: 10px;
 }
 
 .list-wrapper {
@@ -43,6 +54,8 @@
   justify-content: space-around;
   width: 100%;
   height: 100%;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 800;
 }
 
 .player-bar {
@@ -50,10 +63,37 @@
   border-bottom-left-radius: 15px;
 }
 
+.player-bar p {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
 .showPlayers {
   background-color: #ffecd7;
   width: 60%;
   border-bottom-right-radius: 15px;
+}
+
+.player-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin-left: 40px;
+  gap: 2px;
+}
+
+.player-links p:nth-of-type(2) {
+  background-color: #ffecd7;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  width: 108px;
+  padding-left: 20px;
+}
+
+.player-links p {
+  margin: 0;
 }
 
 body {

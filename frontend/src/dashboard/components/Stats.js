@@ -6,8 +6,8 @@ const Stats = (props) => {
   return (
     <div className="stats-wrapper">
       <div className="stats">
-        <h1>Your Stats</h1>
-        { props.score !== undefined ? <span>{props.score} / {props.total}</span> : <span>login to view stats</span> }
+        <p>Stats</p>
+        { props.score !== undefined ? <span>{props.score} / {props.total}</span> : <span>Offline</span> }
       </div>
     </div>
   );

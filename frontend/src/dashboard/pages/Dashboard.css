@@ -79,3 +79,22 @@
   flex-direction: row-reverse;
   height: 80%;
 }
+
+@media only screen and (max-width: 888px) {
+  .dash-wrapper {
+    flex-direction: column;
+  }
+
+  .content-wrapper {
+    width: 90%;
+    height: 100%;
+  }
+
+  .bg-wrapper {
+    min-width: unset;
+  }
+
+  .players {
+    font-size: .6em;
+  }
+}

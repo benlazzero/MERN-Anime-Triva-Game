@@ -6,7 +6,7 @@ import FetchTrivia from '../components/FetchTrivia';
 const Game = () => {
   
   return (
-    <div>
+    <div className="main-trivia-wrapper">
       <h3>Name that anime...</h3>
       <FetchTrivia />
     </div>

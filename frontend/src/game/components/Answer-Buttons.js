@@ -111,18 +111,20 @@ const AnswerButtons = (props) => {
         {console.log('from parent component' + tempAnswers)}
         {console.log(rightAnswer)}
         <p>{score.current} / {total.current}</p>
-        <button onClick={handleClick}>
-          {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
-        </button>
-        <button onClick={handleClick}>
-          {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
-        </button>
-        <button onClick={handleClick}>
-          {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
-        </button>
-        <button onClick={handleClick}>
-          {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
-        </button>
+        <div className="flex-ansbtn">
+          <button onClick={handleClick}>
+            {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
+          </button>
+          <button onClick={handleClick}>
+            {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
+          </button>
+          <button onClick={handleClick}>
+            {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
+          </button>
+          <button onClick={handleClick}>
+            {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
+          </button>
+        </div>
         { outcome ? <button onClick={props.reload}>next question</button> : null }
         <a href="/dashboard">back to dashboard</a>
       </div>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import AnswerButtonsGuest from './Answer-Buttons-Guest';
+import logo from '../../public/logo2.png';
 
 const GetRandomQuote = () => {
   const [quote, setQuote] = useState('loading...');
@@ -9,6 +10,7 @@ const GetRandomQuote = () => {
   const toggler = () => {
     setToggle(() => setToggle(!toggle));
   }
+
 
   useEffect(() => {
     console.log('useEffect is running');
@@ -21,12 +23,16 @@ const GetRandomQuote = () => {
   }, [toggle]); 
 
   return (
-    <div>
-      <p>{quote.quote}</p>
-      <p>{quote.character}</p>
-      <h3>Answers Below</h3> 
-      <hr />
-      <AnswerButtonsGuest reload={toggler} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+    <div className="trivia-wrapper" id="triv-wrap">
+      <img className="game-logo" src={logo} />
+      <a className="return-btn" href="/dashboard/guest">back to dashboard</a>
+      <div className="quote-content-wrap">
+        <div className="quote-char-wrapper">
+          <p className="quote"><q><em>{quote.quote}</em></q></p>
+          <p className="character">-{quote.character}</p>
+        </div>
+        <AnswerButtonsGuest reload={toggler} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+      </div>
     </div>
   );
 };
