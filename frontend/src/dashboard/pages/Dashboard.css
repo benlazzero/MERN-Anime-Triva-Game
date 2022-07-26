@@ -92,6 +92,7 @@
 
   .bg-wrapper {
     min-width: unset;
+    min-height: unset;
   }
 
   .players {

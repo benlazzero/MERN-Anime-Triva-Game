@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import AnswerButtons from './Answer-Buttons';
+import logo from '../../public/logo2.png';
 
 const GetRandomQuote = () => {
   const [quote, setQuote] = useState('loading...');
@@ -21,12 +22,16 @@ const GetRandomQuote = () => {
   }, [toggle]); 
 
   return (
-    <div>
-      <p>{quote.quote}</p>
-      <p>{quote.character}</p>
-      <h3>Answers Below</h3> 
-      <hr />
-      <AnswerButtons reload={toggler} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+    <div className="trivia-wrapper" id="triv-wrap">
+      <img className="game-logo" src={logo} />
+      <a className="return-btn" href="/dashboard">back to dashboard</a>
+      <div className="quote-content-wrap">
+        <div className="quote-char-wrapper">
+          <p className="quote"><q><em>{quote.quote}</em></q></p>
+          <p className="character">-{quote.character}</p>
+        </div>
+        <AnswerButtons reload={toggler} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
+      </div>
     </div>
   );
 };

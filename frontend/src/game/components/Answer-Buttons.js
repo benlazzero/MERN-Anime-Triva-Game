@@ -106,27 +106,33 @@ const AnswerButtons = (props) => {
 
 
   return (
-      <div>
-        {console.log("current user is" + currentUser.current)}
-        {console.log('from parent component' + tempAnswers)}
-        {console.log(rightAnswer)}
-        <p>{score.current} / {total.current}</p>
-        <div className="flex-ansbtn">
-          <button onClick={handleClick}>
-            {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
-          </button>
-          <button onClick={handleClick}>
-            {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
-          </button>
-          <button onClick={handleClick}>
-            {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
-          </button>
-          <button onClick={handleClick}>
-            {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
-          </button>
+      <div className="mega-btn-wrapper">
+        <div className="ans-btn-wrapper">
+          {console.log("current user is" + currentUser.current)}
+          {console.log('from parent component' + tempAnswers)}
+          {console.log(rightAnswer)}
+          <div className="keep-score">
+            <p className="current-score">Correct <br />{score.current}</p>
+            <p className="current-total">Total <br /> {total.current}</p>
+          </div>
+          <div className="flex-ansbtn">
+            <button onClick={handleClick}>
+              {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
+            </button>
+            <button onClick={handleClick}>
+              {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
+            </button>
+            <button onClick={handleClick}>
+              {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
+            </button>
+            <button onClick={handleClick}>
+              {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
+            </button>
+          </div>
         </div>
-        { outcome ? <button onClick={props.reload}>next question</button> : null }
-        <a href="/dashboard">back to dashboard</a>
+        <div className="outcome-wrapper">
+          { outcome ? <button id="next-question" onClick={props.reload}>next question</button> : null }
+        </div>
       </div>
   )
 };

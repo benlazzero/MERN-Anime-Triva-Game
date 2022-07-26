@@ -103,7 +103,7 @@ const AnswerButtons = (props) => {
           </div>
         </div>
         <div className="outcome-wrapper">
-    { outcome ? <button id="next-question" onClick={props.reload}>next question</button> : null }
+          { outcome ? <button id="next-question" onClick={props.reload}>next question</button> : null }
         </div>
       </div>
   )
