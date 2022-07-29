@@ -16,6 +16,7 @@ const dashboardRoute = require('./routes/dashboard-route');
 const authRoute = require('./routes/auth');
 const createRoute = require('./routes/create');
 const updateRoute = require('./routes/update');
+const editRoute = require('./routes/edit-user');
 const statusError = require('./middleware/status-error');
 //const scraper = require('./scraper.js');
 
@@ -41,6 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(gameRoute);
+app.use(editRoute);
 app.use(dashboardRoute);
 app.use("/auth", authRoute);
 app.use(createRoute);

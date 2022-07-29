@@ -10,6 +10,7 @@ import folderImage from '../../public/folder.png';
 
 const Dashboard = () => {
   const [user, setUser] = useState(); 
+  const [edit, setEdit] = useState(false);
   let holdUser;
 
   const getInfo = async () => {
@@ -34,6 +35,41 @@ const Dashboard = () => {
     }
   }
 
+  const deleteHandler = async () => {
+    try {
+      const url = 'http://localhost:4000/edit';
+      let data = await axios.delete(url, { withCredentials: true })
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      window.location.replace('http://localhost:3000')
+      // handle redirect to login page
+    }
+  }
+
+  const resetHandler = async () => {
+    try {
+      const url = 'http://localhost:4000/edit';
+      let data = await axios.put(url, { withCredentials: true, user: {user}}, {
+        headers: {
+          'Access-Control-Allow-Origin': '*', 
+        }
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setEdit(false);
+      window.location.reload(false);
+      // refresh page somehow
+    }
+  }
+
+  const isEditViewable = () => {
+    setEdit(!edit);
+  }
+
   useEffect(() => {
       console.log('get effect called');
       getInfo();
@@ -46,17 +82,31 @@ const Dashboard = () => {
         <div className="bg-wrapper">
           <div className="header">
             <div className="header-content">
-              <a className="header-link" href="/">
+              <a onClick={logoutHandler} className="header-link" href="/">
                 <img src={folderImage} width="64px" height="64px" />
-                <p>Back To Login</p>
+                <p>Logout</p>
               </a>
+              <button onClick={isEditViewable} className="header-link">
+                <img src={folderImage} width="64px" height="64px" />
+                <p>Edit Account</p>
+              </button>
               <StartButton />
-              <a onClick={logoutHandler} href="/">logout</a>
             </div>
+            { edit ? <div className="edit-wrapper">
+                        <button className='edit-toggle-button' onClick={isEditViewable} />
+                        <div className="edit-info">
+                          <p>selections can not be undone</p>
+                        </div>
+                        <div className="edit-btn-wrapper">
+                          <button onClick={deleteHandler} >remove account</button>
+                          <button onClick={resetHandler} >reset score</button>
+                        </div>
+                     </div>
+            : null }
           </div>
           <div className="dash-wrapper">
             { user !== undefined ? console.log(user) : console.log('user undefined') }
-            { user !== undefined ? <h1>{user.data.user.username}</h1> : <h1>Loading</h1> }
+            { user !== undefined ? <h1 className="user-name" >Welcome<br />{user.data.user.username}</h1> : <h1>Loading</h1> }
               <TopPlayers />
             { user !== undefined ? <Stats score={user.data.user.score} total={user.data.user.total} /> : <Stats /> }
           </div>
