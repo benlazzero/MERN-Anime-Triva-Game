@@ -6,7 +6,6 @@ import Stats from '../components/Stats';
 import StartButton from '../components/StartButton';
 import './Dashboard.css';
 
-import folderImage from '../../public/folder.png';
 
 const Dashboard = () => {
   const [user, setUser] = useState(); 
@@ -76,37 +75,51 @@ const Dashboard = () => {
   }, [holdUser]);
 
   return (
-    <div className="html-wrapper">
-      <div className="main-wrapper">
-        <p className="domain">NameTheAnime.com</p>
-        <div className="bg-wrapper">
-          <div className="header">
-            <div className="header-content">
-              <a onClick={logoutHandler} className="header-link" href="/">
-                <img src={folderImage} width="64px" height="64px" />
-                <p>Logout</p>
-              </a>
-              <button onClick={isEditViewable} className="header-link">
-                <img src={folderImage} width="64px" height="64px" />
-                <p>Edit Account</p>
-              </button>
-              <StartButton />
-            </div>
-            { edit ? <div className="edit-wrapper">
-                        <button className='edit-toggle-button' onClick={isEditViewable} />
-                        <div className="edit-info">
-                          <p>selections can not be undone</p>
-                        </div>
-                        <div className="edit-btn-wrapper">
-                          <button onClick={deleteHandler} >remove account</button>
-                          <button onClick={resetHandler} >reset score</button>
-                        </div>
+    <div className="bg-wrapper">
+      <div>
+        <nav className="navbar navbar-expand-lg bg-light shadow">
+          <div class="container-fluid justify-content-center">
+            <p className="navbar-brand mb-0 h1">NameTheAnime</p>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <StartButton />
+              </li>
+              <li className="nav-item">
+                <button className="nav-link active navbtnedit" onClick={isEditViewable} >
+                  Edit Account
+                </button>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" onClick={logoutHandler} href="/">
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div>
+          <div>
+            { edit ? <div className="card bg-danger text-white shadow-sm text-center">
+                       <div className="card-body">
+                          <div className="mt-2">
+                            <button className="btn btn-outline-dark text-white" onClick={isEditViewable}>X</button>
+                          </div>
+                          <div className="text-center fs-3 mt-3">
+                            Selections Can Not Be Undone
+                          </div>
+                          <div className="btn-wrapper">
+                            <button className="btn btn-outline-warning mb-3 mt-3" onClick={deleteHandler} >remove account</button>
+                            <button className="btn btn-outline-warning" onClick={resetHandler} >reset score</button>
+                          </div>
+                       </div>
                      </div>
             : null }
           </div>
-          <div className="dash-wrapper">
+          <div>
             { user !== undefined ? console.log(user) : console.log('user undefined') }
-            { user !== undefined ? <h1 className="user-name" >Welcome<br />{user.data.user.username}</h1> : <h1>Loading</h1> }
+            <div className="alert alert-success mb-0 mt-4">
+              { user !== undefined ? <h1>Login Success: Welcome {user.data.user.username}!</h1> : <h1>Loading</h1> }
+            </div>
               <TopPlayers />
             { user !== undefined ? <Stats score={user.data.user.score} total={user.data.user.total} /> : <Stats /> }
           </div>

@@ -2,31 +2,18 @@ import React from 'react';
 
 import './Game.css';
 import FetchTrivia from '../components/FetchTrivia';
-import logo from '../../public/logo2.png';
 
 const Game = () => {
   
   return (
-    <div className="main-trivia-wrapper">
-      <div className="fake-webpage">
-        <div className="tab-bar">
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="tab-fake">
-            <img src={logo} />
-            <p>nametheanime.com</p>
-          </div>
-        </div>
-        <div className="address-bar">
-        <p>B</p>
-        <p>F</p>
-        <p>R</p>
-          <div className="input-bar">
+    <div>
+      <div>
+        <div>
+          <div>
             <p>https://nametheanime.com/</p>
           </div>
         </div>
-        <div className="trivia-bg">
+        <div>
           <FetchTrivia />
         </div>
       </div>

@@ -106,16 +106,16 @@ const AnswerButtons = (props) => {
 
 
   return (
-      <div className="mega-btn-wrapper">
-        <div className="ans-btn-wrapper">
+      <div>
+        <div>
           {console.log("current user is" + currentUser.current)}
           {console.log('from parent component' + tempAnswers)}
           {console.log(rightAnswer)}
-          <div className="keep-score">
-            <p className="current-score">Correct <br />{score.current}</p>
-            <p className="current-total">Total <br /> {total.current}</p>
+          <div>
+            <p>Correct <br />{score.current}</p>
+            <p>Total <br /> {total.current}</p>
           </div>
-          <div className="flex-ansbtn">
+          <div>
             <button onClick={handleClick}>
               {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
             </button>
@@ -130,7 +130,7 @@ const AnswerButtons = (props) => {
             </button>
           </div>
         </div>
-        <div className="outcome-wrapper">
+        <div>
           { outcome ? <button id="next-question" onClick={props.reload}>next question</button> : null }
         </div>
       </div>

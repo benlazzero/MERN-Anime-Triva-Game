@@ -37,8 +37,8 @@ const GetTopPlayers = () => {
 
   if (players.length !== 0) {
     for (let i = 0; i < players.length; i++) {
-      usernames.push(<li key={i.toString()}>{players[i].username}</li>);
-      scores.push(<li key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
+      usernames.push(<li className="mb-2 fs-5" key={i.toString()}>{players[i].username}</li>);
+      scores.push(<li className="mb-2 fs-5" key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
     }
 
   }
@@ -47,9 +47,9 @@ const GetTopPlayers = () => {
     return ( <p>loading...</p> );
   } 
   return ( 
-    <div className='list-wrapper'>
-      <ol className='usernames'>{usernames}</ol>
-      <ul className='scores'>{scores}</ul>
+    <div className="row w-auto m-auto">
+      <ol className="col list-group">{usernames}</ol>
+      <ul className="col list-group scores">{scores}</ul>
     </div>
   );
 }
