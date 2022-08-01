@@ -37,8 +37,8 @@ const GetTopPlayers = () => {
 
   if (players.length !== 0) {
     for (let i = 0; i < players.length; i++) {
-      usernames.push(<li className="mb-2 fs-5" key={i.toString()}>{players[i].username}</li>);
-      scores.push(<li className="mb-2 fs-5" key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
+      usernames.push(<li className="mb-0 fs-5 list-group-item" key={i.toString()}>{i+1}. {players[i].username} <span className="float-end">{players[i].score}/{players[i].total}</span></li>);
+      //scores.push(<li className="mb-2 fs-5" key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
     }
 
   }
@@ -48,8 +48,8 @@ const GetTopPlayers = () => {
   } 
   return ( 
     <div className="row w-auto m-auto">
-      <ol className="col list-group">{usernames}</ol>
-      <ul className="col list-group scores">{scores}</ul>
+      <ol className="col list-group text-start">{usernames}</ol>
+      {/*<ul className="col list-group scores">{scores}</ul>*/}
     </div>
   );
 }

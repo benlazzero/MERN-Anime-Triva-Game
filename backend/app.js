@@ -12,6 +12,7 @@ require('./passport.js');
 const uri = process.env.MONGO_URI;
 
 const gameRoute = require('./routes/game-route');
+const statRoute = require('./routes/stat');
 const dashboardRoute = require('./routes/dashboard-route');
 const authRoute = require('./routes/auth');
 const createRoute = require('./routes/create');
@@ -42,6 +43,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(gameRoute);
+app.use(statRoute);
 app.use(editRoute);
 app.use(dashboardRoute);
 app.use("/auth", authRoute);

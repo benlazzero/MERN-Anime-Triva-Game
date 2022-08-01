@@ -9,6 +9,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const [user, setUser] = useState(); 
+  const [statsInfo, setStatsInfo] = useState(); 
   const [edit, setEdit] = useState(false);
   let holdUser;
 
@@ -20,9 +21,18 @@ const Dashboard = () => {
     } catch (err) {
      console.log(err); 
     }
-
   }
 
+  const getStats = async () => {
+    try {
+      const url ='http://localhost:4000/stat';
+      let data = await axios.get(url, { withCredentials: true})
+      setStatsInfo(data)
+    } catch (err) {
+     console.log(err); 
+    }
+  }
+  
   const logoutHandler = async () => {
     console.log("in logout handler");
     try {
@@ -72,29 +82,36 @@ const Dashboard = () => {
   useEffect(() => {
       console.log('get effect called');
       getInfo();
+      getStats();
   }, [holdUser]);
 
   return (
     <div className="bg-wrapper">
+    { statsInfo !== undefined ? console.log(statsInfo.data.userStats) : null}
       <div>
         <nav className="navbar navbar-expand-lg bg-light shadow">
-          <div class="container-fluid justify-content-center">
-            <p className="navbar-brand mb-0 h1">NameTheAnime</p>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <StartButton />
-              </li>
-              <li className="nav-item">
-                <button className="nav-link active navbtnedit" onClick={isEditViewable} >
-                  Edit Account
-                </button>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" onClick={logoutHandler} href="/">
-                  Logout
-                </a>
-              </li>
-            </ul>
+          <div class="container-fluid">
+            <span className="navbar-brand mb-0 h1">NameTheAnime</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav float-end mt-3 me-2">
+                <li className="nav-item">
+                  <StartButton />
+                </li>
+                <li className="nav-item">
+                  <button className="nav-link active navbtnedit" onClick={isEditViewable} >
+                    Edit Account
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link active" onClick={logoutHandler} href="/">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
         <div>
@@ -121,7 +138,9 @@ const Dashboard = () => {
               { user !== undefined ? <h1>Login Success: Welcome {user.data.user.username}!</h1> : <h1>Loading</h1> }
             </div>
               <TopPlayers />
-            { user !== undefined ? <Stats score={user.data.user.score} total={user.data.user.total} /> : <Stats /> }
+            <ol className="list-group test-start">
+              { statsInfo !== undefined ? <Stats score={statsInfo.data.userStats.score} total={statsInfo.data.userStats.total} username={statsInfo.data.userStats.username} rank={statsInfo.data.userStats.rank} /> : <Stats /> }
+            </ol>
           </div>
         </div>
       </div>
