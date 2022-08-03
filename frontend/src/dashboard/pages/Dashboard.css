@@ -6,6 +6,7 @@
 }
 
 .navbtnedit {
+  margin-right: 0;
   border: none;
   background-color: unset;
 }
@@ -37,7 +38,7 @@
 }
 
 .top-players-list {
-  min-width: 280px;
+  min-width: 360px;
 }
 
 .user-stats {
@@ -47,4 +48,10 @@
 
 .nav-item>.nav-link:hover {
   outline: unset; 
+}
+
+.navbar-toggler-icon {
+  width: 1em;
+  height: 1em;
+  color: black;
 }

@@ -21,16 +21,13 @@ const GetRandomQuote = () => {
   }, [toggle]); 
 
   return (
-    <div>
-      <a href="/dashboard">back to dashboard</a>
-      <div>
-        <div>
-          <p><q><em>{quote.quote}</em></q></p>
-          <p>{quote.character}</p>
+      <div className="card">
+        <div className="card-body text-center">
+          <p className="fs-1 fw-bold">{quote.quote}</p>
+          <p className="fs-3 fst-italic">{quote.character}</p>
         </div>
         <AnswerButtons reload={toggler} randAnswers={[quote.anime, quote.wrong1, quote.wrong2, quote.wrong3]} />
       </div>
-    </div>
   );
 };
 

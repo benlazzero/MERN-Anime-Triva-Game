@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(statusError);
 app.use(session({ 
   secret: 'cow man', 
-  cookie: {maxAge: 60000 },
+  cookie: {maxAge: 60000*1440},
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: uri }),

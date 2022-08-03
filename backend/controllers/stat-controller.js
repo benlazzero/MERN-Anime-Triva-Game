@@ -3,7 +3,12 @@ const express = require('express');
 const User = require('../models/user');
 
 const getUserStats = async (req, res, next) => {
-  const playerEmail = req.user._json.email;
+  let playerEmail;
+  try {
+    playerEmail = await req.user._json.email;
+  } catch (err) {
+    return;
+  }
 
   let player;
   let userStats;

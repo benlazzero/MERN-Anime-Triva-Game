@@ -1,2 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@900&display=swap');
+
+.nav-logo-container {
+  width: unset;
+}
+
+.ans-btn-group {
+  background-color: rgb(244, 244, 244);
+  border-radius: 20px;
+  min-width: 300px;
+}
+
+.next-btn {
+  min-width: 300px;
+}
+
+button:disabled {
+  opacity: unset !important;
+}

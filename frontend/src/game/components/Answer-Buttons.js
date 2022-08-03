@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
+import '../pages/Game.css';
+
 const AnswerButtons = (props) => {
   const [outcome, showOutcome] = useState(false);
   const [answers, setAnswers] = useState([]);
@@ -66,7 +68,8 @@ const AnswerButtons = (props) => {
     selected.current = event.target;
     if (selected.current.innerHTML === rightAnswer) {
       showOutcome(true);
-      selected.current.style.color = "green"; 
+      selected.current.style.backgroundColor = "#198754"; 
+      //selected.current.classList.add("btn-success"); 
       total.current = total.current + 1;
       score.current = score.current + 1;
       event.preventDefault();
@@ -80,11 +83,11 @@ const AnswerButtons = (props) => {
         body: JSON.stringify({ score: 1, total: 1 }),
       })
     } else {
-      selected.current.style.color = "red";
+      selected.current.style.backgroundColor = "#dc3545";
       possibleAnswers = event.target.parentNode.childNodes;
       for (let i = 0; i < possibleAnswers.length; i++) {
         if (possibleAnswers[i].innerHTML === rightAnswer) {
-          possibleAnswers[i].style.color = "blue";
+          possibleAnswers[i].style.backgroundColor = "#0dcaf0";
           break;
         }
       }
@@ -115,23 +118,47 @@ const AnswerButtons = (props) => {
             <p>Correct <br />{score.current}</p>
             <p>Total <br /> {total.current}</p>
           </div>
-          <div>
-            <button onClick={handleClick}>
+          <div className="btn-group-vertical d-flex m-auto w-25 ans-btn-group">
+            { outcome ?
+            <button disabled className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
               {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
             </button>
-            <button onClick={handleClick}>
+            :
+            <button className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
+              {mixedAnswers[0] ? mixedAnswers[0] : 'loading...'}
+            </button>
+            }
+            { outcome ?
+            <button disabled className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
               {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
             </button>
-            <button onClick={handleClick}>
+            :
+            <button className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
+              {mixedAnswers[1] ? mixedAnswers[1] : 'loading...'}
+            </button>
+            }
+            { outcome ?
+            <button disabled className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
               {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
             </button>
-            <button onClick={handleClick}>
-              {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'} 
+            :
+            <button className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
+              {mixedAnswers[2] ? mixedAnswers[2] : 'loading...'}
             </button>
+            }
+            { outcome ?
+            <button disabled className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
+              {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'}
+            </button>
+            :
+            <button className="btn btn-primary btn-lg mb-3" onClick={handleClick}>
+              {mixedAnswers[3] ? mixedAnswers[3] : 'loading...'}
+            </button>
+            }
           </div>
         </div>
-        <div>
-          { outcome ? <button id="next-question" onClick={props.reload}>next question</button> : null }
+        <div className="m-auto w-25 mt-3 mb-5 next-btn">
+          { outcome ? <button className="btn btn-dark btn-lg w-100 m-auto"id="next-question" onClick={props.reload}>next question</button> : null }
         </div>
       </div>
   )

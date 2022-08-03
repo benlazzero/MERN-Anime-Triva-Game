@@ -27,7 +27,7 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/user", async(req, res) => {
-  console.log(req.user);
+  console.log("from /user is " + req.user);
   if (req.user !== undefined) {
     console.log(req.user._json.email);
     let userEmail = await (req.user._json.email);
