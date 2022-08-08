@@ -65,12 +65,10 @@ router.get('/google/callback', passport.authenticate("google", {
         }
         User.findOne({ email: req.user._json.email }, function (err, user) {
           console.log("coming from auth" + user);
-          if (user === null) {
+          if (user === null || user.username === 'null') {
             res.redirect('http://localhost:3000/create');
           } else {
-            if (user.username === 'null') {
-              res.redirect('http://localhost:3000/create');
-            }
+            console.log("redirecting to dash")
             res.redirect('http://localhost:3000/dashboard');
           }
         });

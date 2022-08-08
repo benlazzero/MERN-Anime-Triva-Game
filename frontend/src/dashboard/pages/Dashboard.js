@@ -97,7 +97,7 @@ const Dashboard = () => {
   return (
     <div className="bg-wrapper">
     { statsInfo !== undefined ? console.log(statsInfo.data.userStats) : null}
-      <div>
+      <div className="dash-bg-color">
         <nav className="navbar navbar-expand-lg bg-light shadow">
           <div class="container-fluid gx-5">
             <span className="navbar-brand mb-0 h1">NameTheAnime</span>
@@ -135,30 +135,30 @@ const Dashboard = () => {
           </div>
         </nav>
         <div>
-          <div>
-            { edit ? <div className="card bg-danger text-white shadow-sm text-center">
-                       <div className="card-body">
-                          <div className="text-center fs-3 mt-3">
-                            Selections Can Not Be Undone
+          <div className="edit-anime-bg">
+            { edit ? <div className="card text-white shadow-sm text-center edit-card-bg">
+                       <div className="card-body w-50 m-auto edit-card-content">
+                          <div className="alert alert-warning text-center fs-5 mt-3 w-75 m-auto">
+                            This action cannot be undone!
                           </div>
                           <div className="btn-wrapper">
-                            <button className="btn btn-outline-warning mb-3 mt-3" onClick={() => {confirmSelection("delete")}} >remove account</button>
-                            <button className="btn btn-outline-warning" onClick={() => {confirmSelection("reset")}} >reset score</button>
+                            <button className="btn btn-danger mb-3 mt-3" onClick={() => {confirmSelection("delete")}} >delete account</button>
+                            <button className="btn btn-danger" onClick={() => {confirmSelection("reset")}} >reset score</button>
                           </div>
                           <div className="mt-2">
-                            <button className="btn btn-outline-light text-white" onClick={isEditViewable}>X</button>
+                            <button className="btn-close close-btn-edit" aria-label="Close" onClick={isEditViewable}></button>
                           </div>
                        </div>
                      </div>
             : null }
-            { confirm ? <div className="card bg-danger text-white shadow-sm text-center">
-                          <div className="card-body">
-                            <div className="text-center fs-3 mt-3">
-                              Are you sure you want to {editSelection} your account?
+            { confirm ? <div className="card text-white shadow-sm text-center edit-anime-bg">
+                          <div className="card-body w-50 m-auto confirm-bg">
+                            <div className="text-center alert alert-warning fs-5 mt-3 w-75 m-auto">
+                              Are you sure you want to <em>{editSelection}</em> your account?
                             </div>
                             <div className="btn-wrapper">
-                              <button className="btn btn-outline-warning mb-3 mt-3" onClick={() => {editSelection === "reset" ? resetHandler() : deleteHandler()}}>Yes</button>
-                              <button className="btn btn-outline-warning" onClick={() => {setEdit(true); setConfirm(false)}}>No</button>
+                              <button className="btn btn-dark mb-3 mt-3" onClick={() => {editSelection === "reset" ? resetHandler() : deleteHandler()}}>Confirm</button>
+                              <button className="btn-close close-btn-edit m-auto" onClick={() => {setEdit(true); setConfirm(false)}}></button>
                             </div>
                           </div>
                         </div>
@@ -169,18 +169,18 @@ const Dashboard = () => {
             { user !== undefined ? console.log(user) : console.log('user undefined') }
               <TopPlayers />
             <ol className="list-group test-start">
-              { statsInfo !== undefined ? <Stats score={statsInfo.data.userStats.score} total={statsInfo.data.userStats.total} username={statsInfo.data.userStats.username} rank={statsInfo.data.userStats.rank} /> : <Stats /> }
+            { statsInfo !== undefined ? <Stats score={statsInfo.data.userStats.score} total={statsInfo.data.userStats.total} username={statsInfo.data.userStats.username} rank={statsInfo.data.userStats.rank} /> : <Stats /> }
             </ol>
           </div>
         </div>
       </div>
       <div class="container">
-  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
     <div class="d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        link goes here
+      <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
+        github
       </a>
-      <span class="text-muted">&copy; 2021 Company, Inc</span>
+      <span class="text-muted">2022 Ben Lazzeroni</span>
     </div>
 
   </footer>

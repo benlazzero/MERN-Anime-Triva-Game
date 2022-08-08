@@ -14,11 +14,19 @@ const Game = () => {
           </div>
           <ul className="navbar-nav me-3 float-start">
             <li className="nav-item">
-              <Link className="nav-link active p-1" to="/dashboard">back to dashboard</Link>
+              <Link className="nav-link active p-1" to="/dashboard">Dashboard</Link>
             </li>
           </ul>
         </nav>
         <FetchTrivia />
+        <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
+          <div class="d-flex align-items-center">
+            <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
+              github
+            </a>
+            <span class="text-muted">2022 Ben Lazzeroni</span>
+          </div>
+        </footer>
       </div>
   )
 };

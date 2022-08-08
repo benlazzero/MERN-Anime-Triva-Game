@@ -1,0 +1,30 @@
+.top-players-name {
+  width: 740px;
+  margin: auto;
+  align-self: center;
+}
+
+.list-rank {
+  width: 28%;
+}
+
+.list-name {
+  text-align: center;
+  width: 33.33%;
+  white-space: nowrap;
+}
+
+.list-score {
+  width: 38%;
+  text-align: end;
+  white-space: nowrap;
+  font-size: 1em;
+}
+
+.info-header {
+  background-color: grey;
+}
+
+#rank, #username, #score {
+  color: white;
+}

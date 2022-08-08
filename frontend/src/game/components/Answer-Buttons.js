@@ -114,9 +114,10 @@ const AnswerButtons = (props) => {
           {console.log("current user is" + currentUser.current)}
           {console.log('from parent component' + tempAnswers)}
           {console.log(rightAnswer)}
-          <div>
-            <p>Correct <br />{score.current}</p>
-            <p>Total <br /> {total.current}</p>
+          <div className="d-flex w-50 m-auto justify-content-center text-center">
+            <p className="fs-1 fw-bold font-monospace text-success">{score.current}</p>
+            <p className="fs-1 font-monospace">/</p>
+            <p className="fs-1 fw-bold font-monospace">{total.current}</p>
           </div>
           <div className="btn-group-vertical d-flex m-auto w-25 ans-btn-group">
             { outcome ?

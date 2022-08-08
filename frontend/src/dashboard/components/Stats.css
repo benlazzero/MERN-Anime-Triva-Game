@@ -1,0 +1,12 @@
+.user-stats-item {
+  min-width: 328px;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 16px;
+}
+
+.user-stats-wrapper{
+  min-width: 360px;
+  padding: 16px 10px 0 10px;
+  max-width: 419.5px;
+}

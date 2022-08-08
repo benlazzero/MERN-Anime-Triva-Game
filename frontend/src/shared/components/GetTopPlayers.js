@@ -37,7 +37,7 @@ const GetTopPlayers = () => {
 
   if (players.length !== 0) {
     for (let i = 0; i < players.length; i++) {
-      usernames.push(<li className="mb-0 fs-5 list-group-item" key={i.toString()}>{i+1}. {players[i].username} <span className="float-end">{players[i].score}/{players[i].total}</span></li>);
+      usernames.push(<li className="d-flex mb-2 list-group-item flex-players-list" key={i.toString()}>{<span className="fw-bold list-rank">{i+1}</span>} {<span className="font-monospace list-name">{players[i].username}</span>}<span className="font-monospace list-score">{players[i].score}/{players[i].total}</span></li>);
       //scores.push(<li className="mb-2 fs-5" key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
     }
 
@@ -48,7 +48,14 @@ const GetTopPlayers = () => {
   } 
   return ( 
     <div className="row w-auto m-auto">
-      <ol className="col list-group text-start">{usernames}</ol>
+      <ol className="col list-group text-start pe-0">
+        <li className="d-flex mb-2 list-group-item flex-players-list border-0 info-header">
+          <span id="rank" className="list-rank">Rank</span>
+          <span id="username" className="font-monospace list-name">Username</span>
+          <span id="score" className="font-monospace list-score">Score</span>
+        </li>
+        {usernames}
+      </ol>
       {/*<ul className="col list-group scores">{scores}</ul>*/}
     </div>
   );

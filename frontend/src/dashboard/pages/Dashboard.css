@@ -55,3 +55,42 @@
   height: 1em;
   color: black;
 }
+
+.close-btn-edit {
+  color: white;
+  filter: invert(100%);
+  opacity: unset;
+  width: 2em;
+  height: 2em;
+}
+
+.edit-card-content {
+  margin: 10px 0 10px 0;
+  color: rgb(255, 255, 255);
+  min-width: 280px;
+  max-width: 360px;
+  background-color: rgb(40, 40, 40);
+  border-radius: 20px;
+  height: 90%;
+}
+
+.edit-anime-bg {
+  background-image: url("../../public/anime-bg.jpg");
+  background-size: cover;
+}
+
+.edit-card-bg {
+  background-color: transparent;
+}
+
+.confirm-bg {
+  background-color: rgb(214, 32, 32);
+  border-radius: 20px;
+  min-width: 280px;
+  max-width: 360px;
+}
+
+.stat-info-card {
+  min-width: 328px;
+  width: 47%;
+}
