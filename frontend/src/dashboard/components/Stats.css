@@ -10,3 +10,12 @@
   padding: 16px 10px 0 10px;
   max-width: 419.5px;
 }
+
+.user-stats-box {
+  color: white;
+  max-width: 30%;
+  border-radius: 15px;
+  background-color: #3262f5;
+  min-width: 380px;
+  outline: 2px solid white;
+}

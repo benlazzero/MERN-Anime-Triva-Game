@@ -1,14 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './StartButton.css';
 
 const StartButton = () => {
   return (
-    <div>
-      <a href="/game/guest">
-        <p>Start Game</p>
-      </a>
-    </div>
+      <Link className="nav-link active" to="/game/guest">
+        Start Game
+      </Link>
   );
 };
 

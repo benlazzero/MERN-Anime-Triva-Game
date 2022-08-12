@@ -25,20 +25,19 @@
   list-style-type: none;
 }
 
-.btn-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  min-width: 200px;
-  margin: auto;
-}
 
 .playerstop {
+  border-radius: 20px;
+  color: white;
+  max-width: 50%;
+  background-color: #0f1c3b;
   min-width: 380px;
+  outline: 2px solid white;
 }
 
 .top-players-list {
-  min-width: 360px;
+  width: 80%;
+  min-width: 330px;
 }
 
 .user-stats {
@@ -56,31 +55,25 @@
   color: black;
 }
 
-.close-btn-edit {
-  color: white;
-  filter: invert(100%);
-  opacity: unset;
-  width: 2em;
-  height: 2em;
-}
-
 .edit-card-content {
   margin: 10px 0 10px 0;
   color: rgb(255, 255, 255);
   min-width: 280px;
   max-width: 360px;
-  background-color: rgb(40, 40, 40);
+  background-color: #3262f5;
   border-radius: 20px;
   height: 90%;
 }
 
-.edit-anime-bg {
-  background-image: url("../../public/anime-bg.jpg");
-  background-size: cover;
+.edit-card-bg {
+  margin-bottom: 4.5rem;
+  background-color: transparent;
+  border: unset;
 }
 
-.edit-card-bg {
-  background-color: transparent;
+.edit-anime-bg {
+  border: unset;
+  background-color: unset;
 }
 
 .confirm-bg {
@@ -88,9 +81,100 @@
   border-radius: 20px;
   min-width: 280px;
   max-width: 360px;
+  margin: auto;
+  margin-bottom: 4.5rem;
 }
 
 .stat-info-card {
   min-width: 328px;
   width: 47%;
+}
+
+.content-bg-dash {
+  background-color: #c2d7fc;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.icon-settings {
+  height: 60px;
+  width: 60px;
+  margin-left: 40px;
+  margin-top: 35px;
+}
+
+.close-btn-edit {
+  color: white;
+  filter: invert(90%);
+  opacity: unset;
+  width: 60px;
+  height: 60px;
+  margin-right: 40px;
+  margin-top: 35px;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 40px 0 40px;
+}
+
+.btn-wrapper button {
+  width: 140px;
+  height: 50px;
+}
+
+.edit-p {
+  height: 30%;
+}
+
+.edit-p p:first-child {
+  color: rgb(236, 236, 236);
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+.edit-p p:nth-child(2) {
+  color: grey;
+}
+
+.edit-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  height: 315px;
+  background-color: rgb(12, 12, 12);
+  border-radius: 20px;
+  outline: 2px solid rgb(224, 224, 224);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -190px;
+  z-index: 4;
+}
+
+.edit-menu-wrapper p {
+  margin: 0 40px 0 40px;
+}
+
+#root-bg {
+  opacity: .5;
+}
+
+.bg-blurout {
+  opacity: .5;
+}
+
+#edit-first-menu {
+  opacity: 1;
+}
+
+#edit-second-menu {
+  opacity: 1;
 }

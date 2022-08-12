@@ -60,6 +60,17 @@
   width: 330px;
 } 
 
+.create-info-list {
+  font-size: .8em;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 50px;
+  list-style-type: none;
+  align-self: center;
+  color: grey;
+}
+
 
 @media only screen and (max-width: 784px) {
   .create-hero {

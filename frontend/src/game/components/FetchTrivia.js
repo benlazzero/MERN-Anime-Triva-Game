@@ -21,7 +21,7 @@ const GetRandomQuote = () => {
   }, [toggle]); 
 
   return (
-      <div className="card border-0">
+      <div className="card border-0 game-bg-area">
         <div className="card-body w-75 m-auto">
           <figure className="text-center">
             <blockquote className="blockquote">

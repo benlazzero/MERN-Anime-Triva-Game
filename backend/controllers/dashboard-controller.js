@@ -7,7 +7,7 @@ const getTopPlayers = async (req, res, next) => {
 
   let player;
   try {
-    player = await User.find().sort({score: -1}).limit(10); 
+    player = await User.find().sort({score: -1}); 
   } catch (err) {
     console.log(err);
     return next(err);

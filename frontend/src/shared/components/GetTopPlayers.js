@@ -36,7 +36,7 @@ const GetTopPlayers = () => {
   }, []); 
 
   if (players.length !== 0) {
-    for (let i = 0; i < players.length; i++) {
+    for (let i = 0; i < 10; i++) {
       usernames.push(<li className="d-flex mb-2 list-group-item flex-players-list" key={i.toString()}>{<span className="fw-bold list-rank">{i+1}</span>} {<span className="font-monospace list-name">{players[i].username}</span>}<span className="font-monospace list-score">{players[i].score}/{players[i].total}</span></li>);
       //scores.push(<li className="mb-2 fs-5" key={(i+10).toString()}>{players[i].score}/{players[i].total}</li>);
     }

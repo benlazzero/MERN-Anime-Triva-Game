@@ -116,8 +116,8 @@ const AnswerButtons = (props) => {
           {console.log(rightAnswer)}
           <div className="d-flex w-50 m-auto justify-content-center text-center">
             <p className="fs-1 fw-bold font-monospace text-success">{score.current}</p>
-            <p className="fs-1 font-monospace">/</p>
-            <p className="fs-1 fw-bold font-monospace">{total.current}</p>
+            <p className="fs-1 font-monospace text-secondary">/</p>
+            <p className="fs-1 fw-bold font-monospace text-secondary">{total.current}</p>
           </div>
           <div className="btn-group-vertical d-flex m-auto w-25 ans-btn-group">
             { outcome ?
@@ -159,7 +159,7 @@ const AnswerButtons = (props) => {
           </div>
         </div>
         <div className="m-auto w-25 mt-3 mb-5 next-btn">
-          { outcome ? <button className="btn btn-dark btn-lg w-100 m-auto"id="next-question" onClick={props.reload}>next question</button> : null }
+          { outcome ? <button className="btn btn-secondary btn-lg w-100 m-auto"id="next-question" onClick={props.reload}>next question</button> : null }
         </div>
       </div>
   )

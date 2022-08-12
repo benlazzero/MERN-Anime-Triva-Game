@@ -10,7 +10,7 @@ const Game = () => {
       <div>
         <nav className="navbar navbar-expand-lg d-flex justify-content-start flex-nowrap bg-light shadow">
           <div className="container-fluid m-0 nav-logo-container">
-            <span className="navbar-brand mb-0 h1 me-1">NameTheAnime</span>
+            <span className="navbar-brand mb-0 h1 me-1 font-monospace">NameTheAnime</span>
           </div>
           <ul className="navbar-nav me-3 float-start">
             <li className="nav-item">

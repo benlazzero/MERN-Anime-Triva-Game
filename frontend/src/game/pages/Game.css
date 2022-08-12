@@ -6,7 +6,7 @@
 }
 
 .ans-btn-group {
-  background-color: rgb(244, 244, 244);
+  background-color: #1a3166;
   border-radius: 20px;
   min-width: 300px;
 }
@@ -17,4 +17,12 @@
 
 button:disabled {
   opacity: unset !important;
+}
+
+.game-bg-area {
+  background-color: #0f1c3b;
+}
+
+.game-bg-area figure {
+  color: white;
 }

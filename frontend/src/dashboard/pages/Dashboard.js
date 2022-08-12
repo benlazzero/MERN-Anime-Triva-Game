@@ -5,6 +5,8 @@ import TopPlayers from '../components/TopPlayers';
 import Stats from '../components/Stats';
 import StartButton from '../components/StartButton';
 import './Dashboard.css';
+import settingsIcon from '../../public/settings.png';
+import confirmIcon from '../../public/areyousure.png';
 
 //href links with redirects need to use react router or something that doesnt reload
 const Dashboard = () => {
@@ -95,19 +97,49 @@ const Dashboard = () => {
   }, [holdUser]);
 
   return (
-    <div className="bg-wrapper">
-    { statsInfo !== undefined ? console.log(statsInfo.data.userStats) : null}
-      <div className="dash-bg-color">
+    <div className="bg-wrapper"> 
+    { statsInfo !== undefined ? console.log(statsInfo.data.userStats) : null }
+          <div className="edit-anime-bg">
+            { edit ? <div className="edit-menu-wrapper" id="edit-first-menu">
+                          <div className="edit-top-wrapper">
+                            <img src={settingsIcon} className="icon-settings"></img>
+                            <button className="btn-close close-btn-edit" aria-label="Close" onClick={isEditViewable}></button>
+                          </div>
+                          <div className="edit-p">
+                            <p>Account settings</p>
+                            <p>You may choose to either delete or reset your account.</p>
+                          </div>
+                          <div className="btn-wrapper">
+                            <button className="btn btn-danger" onClick={() => {confirmSelection("delete")}} >Delete</button>
+                            <button className="btn btn-warning" onClick={() => {confirmSelection("reset")}} >Reset</button>
+                          </div>
+                    </div>
+            : null }
+            { confirm ? <div className="edit-menu-wrapper" id="edit-second-menu">
+                            <div className="edit-top-wrapper">
+                              <img src={confirmIcon} className="icon-settings mb-2"></img>
+                            </div>
+                              <div className="edit-p">
+                                <p>Are you sure you want to <em>{editSelection}</em> your account?</p>
+                              </div>
+                            <div className="btn-wrapper">
+                              <button className="btn btn-secondary" onClick={() => {setEdit(true); setConfirm(false)}}>Cancel</button>
+                              <button className="btn btn-primary" onClick={() => {editSelection === "reset" ? resetHandler() : deleteHandler()}}>Confirm</button>
+                            </div>
+                        </div>
+            : null }
+          </div>
+      <div className="dash-bg-color" id={edit || confirm ? "root-bg" : ""}>
         <nav className="navbar navbar-expand-lg bg-light shadow">
           <div class="container-fluid gx-5">
-            <span className="navbar-brand mb-0 h1">NameTheAnime</span>
+            <span className="navbar-brand mb-0 h1 font-monospace">NameTheAnime</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse gy-5" id="navbarNav">
+            <div className="collapse navbar-collapse gy-5 drop-down-nav" id="navbarNav">
               <ul className="navbar-nav float-end text-end">
                 <li className="nav-item">
-                  { user !== undefined ? <span className="nav-link disabled fst-italic font-monospace" >{user.data.user.username}</span> : null }
+                  { user !== undefined ? <span className="nav-link disabled fst-italic font-monospace">{user.data.user.username}</span> : null }
                 </li>
                 <li className="nav-item">
                   <StartButton />
@@ -117,7 +149,7 @@ const Dashboard = () => {
                     Edit Account
                   </a>
                 </li>
-                { user !== undefined ?
+                  { user !== undefined ?
                 <li className="nav-item">
                   <a className="nav-link active" onClick={logoutHandler} href="/">
                     Logout
@@ -134,36 +166,7 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
-        <div>
-          <div className="edit-anime-bg">
-            { edit ? <div className="card text-white shadow-sm text-center edit-card-bg">
-                       <div className="card-body w-50 m-auto edit-card-content">
-                          <div className="alert alert-warning text-center fs-5 mt-3 w-75 m-auto">
-                            This action cannot be undone!
-                          </div>
-                          <div className="btn-wrapper">
-                            <button className="btn btn-danger mb-3 mt-3" onClick={() => {confirmSelection("delete")}} >delete account</button>
-                            <button className="btn btn-danger" onClick={() => {confirmSelection("reset")}} >reset score</button>
-                          </div>
-                          <div className="mt-2">
-                            <button className="btn-close close-btn-edit" aria-label="Close" onClick={isEditViewable}></button>
-                          </div>
-                       </div>
-                     </div>
-            : null }
-            { confirm ? <div className="card text-white shadow-sm text-center edit-anime-bg">
-                          <div className="card-body w-50 m-auto confirm-bg">
-                            <div className="text-center alert alert-warning fs-5 mt-3 w-75 m-auto">
-                              Are you sure you want to <em>{editSelection}</em> your account?
-                            </div>
-                            <div className="btn-wrapper">
-                              <button className="btn btn-dark mb-3 mt-3" onClick={() => {editSelection === "reset" ? resetHandler() : deleteHandler()}}>Confirm</button>
-                              <button className="btn-close close-btn-edit m-auto" onClick={() => {setEdit(true); setConfirm(false)}}></button>
-                            </div>
-                          </div>
-                        </div>
-            : null }
-          </div>
+        <div className="content-bg-dash">
           <div>
             {console.log("stats info is " + statsInfo) }
             { user !== undefined ? console.log(user) : console.log('user undefined') }
@@ -175,16 +178,15 @@ const Dashboard = () => {
         </div>
       </div>
       <div class="container">
-  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
-    <div class="d-flex align-items-center">
-      <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
-        github
-      </a>
-      <span class="text-muted">2022 Ben Lazzeroni</span>
-    </div>
-
-  </footer>
-</div>
+        <footer class="d-flex flex-wrap justify-content-center align-items-center py-3">
+          <div class="d-flex align-items-center">
+            <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
+              github
+            </a>
+            <span class="text-muted">2022 Ben Lazzeroni</span>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 };

@@ -56,7 +56,11 @@ const Create = () => {
           <form className="" onSubmit={addUsername}>
             <img src={sword} className="mb-5"></img>
             <label className="fs-5 mb-3 text-center">Create a username</label>
-            <input className="form-control mb-3 w-75" type="text" maxlength="10" placeholder="Maximum 10 characters" onChange={(e) => setUsername(e.target.value)} />
+            <ul className="create-info-list">
+              <li>Maximum 10 characters</li>
+              <li>Minimum 3 characters</li>
+            </ul>
+            <input className="form-control mb-3 w-75" type="text" minlength="3" maxlength="10" placeholder="What's your name?..." onChange={(e) => setUsername(e.target.value)} />
             <button className="btn btn-primary w-75 mb-5" type="submit">Submit</button>  
           </form>
           <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
