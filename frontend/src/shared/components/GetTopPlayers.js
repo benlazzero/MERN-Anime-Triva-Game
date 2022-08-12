@@ -6,7 +6,6 @@ import './GetTopPlayers.css';
 const GetTopPlayers = () => {
   const [players, setPlayer] = useState([]);
   let usernames = [];
-  let scores = [];
 
   useEffect(() => {
     const source = axios.CancelToken.source();

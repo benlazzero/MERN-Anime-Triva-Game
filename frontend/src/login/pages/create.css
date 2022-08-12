@@ -4,7 +4,7 @@
 
 .create-hero {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   background-color: #041e45;
   width: 40%;
@@ -27,7 +27,7 @@
 
 .create-form {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   background-color: #c4dcff;
   width: 60%;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import TopPlayers from '../components/TopPlayers';
@@ -102,7 +102,7 @@ const Dashboard = () => {
           <div className="edit-anime-bg">
             { edit ? <div className="edit-menu-wrapper" id="edit-first-menu">
                           <div className="edit-top-wrapper">
-                            <img src={settingsIcon} className="icon-settings"></img>
+                            <img src={settingsIcon} alt="cartoon gear icon" className="icon-settings"></img>
                             <button className="btn-close close-btn-edit" aria-label="Close" onClick={isEditViewable}></button>
                           </div>
                           <div className="edit-p">
@@ -117,7 +117,7 @@ const Dashboard = () => {
             : null }
             { confirm ? <div className="edit-menu-wrapper" id="edit-second-menu">
                             <div className="edit-top-wrapper">
-                              <img src={confirmIcon} className="icon-settings mb-2"></img>
+                              <img src={confirmIcon} alt="cat frowning icon" className="icon-settings mb-2"></img>
                             </div>
                               <div className="edit-p">
                                 <p>Are you sure you want to <em>{editSelection}</em> your account?</p>
@@ -131,10 +131,10 @@ const Dashboard = () => {
           </div>
       <div className="dash-bg-color" id={edit || confirm ? "root-bg" : ""}>
         <nav className="navbar navbar-expand-lg bg-light shadow">
-          <div class="container-fluid gx-5">
+          <div className="container-fluid gx-5">
             <span className="navbar-brand mb-0 h1 font-monospace">NameTheAnime</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse gy-5 drop-down-nav" id="navbarNav">
               <ul className="navbar-nav float-end text-end">
@@ -177,13 +177,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="container">
-        <footer class="d-flex flex-wrap justify-content-center align-items-center py-3">
-          <div class="d-flex align-items-center">
-            <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
+      <div className="container">
+        <footer className="d-flex flex-wrap justify-content-center align-items-center py-3">
+          <div className="d-flex align-items-center">
+            <a href="https://github.com/benlazzero/AniCharTrivia" className="me-2 mb-md-0 text-muted lh-1">
               github
             </a>
-            <span class="text-muted">2022 Ben Lazzeroni</span>
+            <span className="text-muted">2022 Ben Lazzeroni</span>
           </div>
         </footer>
       </div>

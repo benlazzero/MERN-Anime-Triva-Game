@@ -48,27 +48,27 @@ const Create = () => {
           <span className="text-light fw-bold fs-3 w-75">
             Welcome to the world's most concise anime trivia game and database.
           </span>
-          <img className="create-bg-img" src={bgphoto}></img>
+          <img className="create-bg-img" alt="styled circles accent icon"src={bgphoto}></img>
         </div>
       </div>
       <div className="create-form">
         <div className="inner-form">
           <form className="" onSubmit={addUsername}>
-            <img src={sword} className="mb-5"></img>
+            <img src={sword} alt="anime red sword" className="mb-5"></img>
             <label className="fs-5 mb-3 text-center">Create a username</label>
             <ul className="create-info-list">
               <li>Maximum 10 characters</li>
               <li>Minimum 3 characters</li>
             </ul>
-            <input className="form-control mb-3 w-75" type="text" minlength="3" maxlength="10" placeholder="What's your name?..." onChange={(e) => setUsername(e.target.value)} />
+            <input className="form-control mb-3 w-75" type="text" minLength="3" maxLength="10" placeholder="What's your name?..." onChange={(e) => setUsername(e.target.value)} />
             <button className="btn btn-primary w-75 mb-5" type="submit">Submit</button>  
           </form>
-          <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
-            <div class="d-flex align-items-center">
-              <a href="https://github.com/benlazzero/AniCharTrivia" class="me-2 mb-md-0 text-muted lh-1">
+          <footer className="d-flex flex-wrap justify-content-center align-items-center py-3 border-top">
+            <div className="d-flex align-items-center">
+              <a href="https://github.com/benlazzero/AniCharTrivia" className="me-2 mb-md-0 text-muted lh-1">
                 github
               </a>
-              <span class="text-muted">2022 Ben Lazzeroni</span>
+              <span className="text-muted">2022 Ben Lazzeroni</span>
             </div>
           </footer>
         </div>
