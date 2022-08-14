@@ -46,7 +46,7 @@ const Create = () => {
         <div className="inner-hero">
           <span className="text-light fw-bold w-75">NameTheAnime</span>
           <span className="text-light fw-bold fs-3 w-75">
-            Welcome to the world's most concise anime trivia game and database.
+            Welcome to a concise anime trivia game and database.
           </span>
           <img className="create-bg-img" alt="styled circles accent icon"src={bgphoto}></img>
         </div>

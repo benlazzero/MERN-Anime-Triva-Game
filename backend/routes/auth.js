@@ -4,7 +4,6 @@ const passport = require("passport");
 const User = require('../models/user');
 
 router.get("/login/success", (req, res) => {
-  console.log(req.user ? "login success" : "fails login suceess");
   if (req.user) {
     res.status(200).json({
       error: false,
@@ -27,9 +26,7 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/user", async(req, res) => {
-  console.log("from /user is " + req.user);
   if (req.user !== undefined) {
-    console.log(req.user._json.email);
     let userEmail = await (req.user._json.email);
     User.findOne({ email: userEmail }, function (err, user) {
       res.json({ user: user});
@@ -42,7 +39,6 @@ router.get('/google/callback', passport.authenticate("google", {
     prompt: 'select_account'
   }),
     function (req, res, next) {
-      console.log("google/callbkck going first" + req.user);
       User.findOne({ email: req.user._json.email }, function (err, user) {
         if (user === null) {
           let newUser = new User({ 
@@ -52,23 +48,19 @@ router.get('/google/callback', passport.authenticate("google", {
             total: 0,
           })
           newUser.save(function (err, user) {
-            console.log("in save block");
             if (err) {
               console.log("there was an error in save block" + err)
             } else {
               console.log(user.email + " was saved to mongoDB.");
             }
           });
-          console.log('this is user bullshit');
         } else if (user != null && req.user._json.email_verified === true) {
           console.log(req.user._json.email + " already exists.");
         }
         User.findOne({ email: req.user._json.email }, function (err, user) {
-          console.log("coming from auth" + user);
           if (user === null || user.username === 'null') {
             res.redirect('http://localhost:3000/create');
           } else {
-            console.log("redirecting to dash")
             res.redirect('http://localhost:3000/dashboard');
           }
         });
@@ -79,7 +71,6 @@ router.get('/google/callback', passport.authenticate("google", {
 router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 router.delete("/logout", (req, res) => {
-    console.log(req.session);
     req.session.destroy((err) => {
       if (err) throw err;
       res.clearCookie("session-id");

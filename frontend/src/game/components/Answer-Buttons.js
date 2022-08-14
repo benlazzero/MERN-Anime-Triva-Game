@@ -45,11 +45,9 @@ const AnswerButtons = (props) => {
   }
 
     if (ansIsSet.current === false) {
-      console.log('called array scrambler');
       tempAnswers = MakeMixedAnsArray();
     }
     if (tempAnswers.length > 0 && mixedAnswers.length === 0) {
-     console.log('set to true');
      setRightAnswer(props.randAnswers[0]);
      ansIsSet.current = true;
      setMixedAnswers(tempAnswers);
@@ -104,16 +102,12 @@ const AnswerButtons = (props) => {
         body: JSON.stringify({ score: 0, total: 1 }),
       })
     }
-    console.log(selected.current);
   }
 
 
   return (
       <div>
         <div>
-          {console.log("current user is" + currentUser.current)}
-          {console.log('from parent component' + tempAnswers)}
-          {console.log(rightAnswer)}
           <div className="d-flex w-50 m-auto justify-content-center text-center">
             <p className="fs-1 fw-bold font-monospace text-success">{score.current}</p>
             <p className="fs-1 font-monospace text-secondary">/</p>

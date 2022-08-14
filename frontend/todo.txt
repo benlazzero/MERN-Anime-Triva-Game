@@ -1,0 +1,4 @@
+todo:
+-scrape more quotes
+-build
+-deploy

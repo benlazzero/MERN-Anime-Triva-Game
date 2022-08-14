@@ -91,14 +91,12 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-      console.log('get effect called');
       getInfo();
       getStats();
   }, [holdUser]);
 
   return (
     <div className="bg-wrapper"> 
-    { statsInfo !== undefined ? console.log(statsInfo.data.userStats) : null }
           <div className="edit-anime-bg">
             { edit ? <div className="edit-menu-wrapper" id="edit-first-menu">
                           <div className="edit-top-wrapper">
@@ -168,8 +166,6 @@ const Dashboard = () => {
         </nav>
         <div className="content-bg-dash">
           <div>
-            {console.log("stats info is " + statsInfo) }
-            { user !== undefined ? console.log(user) : console.log('user undefined') }
               <TopPlayers />
             <ol className="list-group test-start">
             { statsInfo !== undefined ? <Stats score={statsInfo.data.userStats.score} total={statsInfo.data.userStats.total} username={statsInfo.data.userStats.username} rank={statsInfo.data.userStats.rank} /> : <Stats /> }

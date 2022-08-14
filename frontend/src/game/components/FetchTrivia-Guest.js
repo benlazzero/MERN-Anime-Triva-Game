@@ -12,7 +12,6 @@ const GetRandomQuote = () => {
 
 
   useEffect(() => {
-    console.log('useEffect is running');
     fetch('http://localhost:4000/api/game')
       .then(response => response.json())
       .then(data => setQuote(data))

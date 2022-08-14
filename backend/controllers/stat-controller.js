@@ -21,7 +21,6 @@ const getUserStats = async (req, res, next) => {
   }
   // edit json to only show username and score and number
   // find what rank in ordered list the loggedin user is
-  console.log(player.length);
   for(i = 0; i < player.length; i++) {
     if(playerEmail === player[i].email) {
       userStats = {
@@ -33,7 +32,6 @@ const getUserStats = async (req, res, next) => {
       break;
     }
   }
-
   res.json({ userStats });
 };
 

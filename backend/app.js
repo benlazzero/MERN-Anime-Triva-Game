@@ -1,4 +1,4 @@
-// https://animechan.vercel.app/ <- this is the api
+// https://animechan.vercel.app/ <- this is the api too many requests
 require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -19,11 +19,8 @@ const createRoute = require('./routes/create');
 const updateRoute = require('./routes/update');
 const editRoute = require('./routes/edit-user');
 const statusError = require('./middleware/status-error');
-//const scraper = require('./scraper.js');
 
 const app = express();
-
-app.get('/favicon.ico', (req, res) => res.status(204)); //todo get real favicon
 
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -49,7 +46,6 @@ app.use(dashboardRoute);
 app.use("/auth", authRoute);
 app.use(createRoute);
 app.use(updateRoute);
-//app.use(scraper);
 
 mongoose.connect(uri)
   .then(() => {
